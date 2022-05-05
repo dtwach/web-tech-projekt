@@ -1,1 +1,2 @@
-Fitness-Tracker! von
+Fitness-Tracker! 
+von Kai und Dennis!
