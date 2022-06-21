@@ -6,15 +6,15 @@ function check_file($file)
     $strip = explode('.', $file['name']);
     $file_extension = end($strip);
     if ($file['error'] !== 0) {
-        header('Location: /training_create.php?ms=error');
+        header('Location: ../training_create.php?ms=error');
         exit();
     }
     if ($file['size'] > 3000000) {
-        header('Location: /training_create.php?ms=size');
+        header('Location: ../training_create.php?ms=size');
         exit();
     }
     if (!in_array($file_extension, $filter_arr)) {
-        header('Location: /training_create.php?ms=format');
+        header('Location: ../training_create.php?ms=format');
         exit();
     }
     return file_get_contents($file['tmp_name']);
@@ -25,7 +25,7 @@ function compare_ex_name($name_ex, $id)
     require 'dbcon_f.php';
     $stmt = $con->prepare("SELECT * FROM training WHERE name=? AND fk_user=?;");
     if (!$stmt) {
-        header('Location: /training_create.php?ms=db');
+        header('Location: ../training_create.php?ms=db');
         exit();
     }
     $stmt->bind_param('si', $name_ex, $id);
@@ -38,7 +38,7 @@ function compare_ex_name($name_ex, $id)
     $name_low = strtolower($name_ex);
     $result_low = strtolower($result['name']);
     if ($name_low === $result_low) {
-        header('Location: /training_create.php?ms=taken');
+        header('Location: ../training_create.php?ms=taken');
         exit();
     }
 }
@@ -56,7 +56,7 @@ if (isset($_POST['training_submit'])) {
     }
 
     if (empty($name_ex) || empty($description)) {
-        header('Location: /training_create.php?ms=empty');
+        header('Location: ../training_create.php?ms=empty');
         exit();
     }
 
@@ -70,13 +70,13 @@ if (isset($_POST['training_submit'])) {
 
     $stmt = $con->prepare("INSERT INTO training (name, description, fk_user, picture) VALUES (?, ?, ?, ?);");
     if (!$stmt) {
-        header('Location: /training_create.php?ms=db');
+        header('Location: ../training_create.php?ms=db');
         exit();
     }
     $stmt->bind_param('ssss', $name_ex, $description, $id, $blob);
     $stmt->execute();
     if (!$stmt) {
-        header('Location: /training_create.php?ms=fail');
+        header('Location: ../training_create.php?ms=fail');
         exit();
     }
     $stmt->close();
@@ -84,6 +84,6 @@ if (isset($_POST['training_submit'])) {
     $tid = get_single_training_id($name_ex);
     add_user_training($id, $tid);
 
-    header('Location: /training_create.php?ms=success');
+    header('Location: ../training_create.php?ms=success');
     $con->close();
 }

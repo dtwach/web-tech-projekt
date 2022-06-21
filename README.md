@@ -24,15 +24,15 @@ function check_file($file){
 $file_extension = end($strip);
 print_r($file);
     if($file['error'] !== 0){
-header('Location: /exercise_create.php?ms=error');
+header('Location: ../exercise_create.php?ms=error');
 exit();
 }  
  if($file['size'] > 200000){
-        header('Location: /exercise_create.php?ms=size');
+        header('Location: ../exercise_create.php?ms=size');
         exit();
     }
     if(!in_array($file_extension, $filter_arr)){
-        header('Location: /exercise_create.php?ms=format');
+        header('Location: ../exercise_create.php?ms=format');
         exit();
     }
     return file_get_contents($file['tmp_name']);

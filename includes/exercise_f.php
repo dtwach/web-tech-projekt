@@ -17,7 +17,7 @@ if (isset($_POST['id_training']) && isset($_POST['id_exercise'])) {
 
     $stmt = $con->prepare("INSERT INTO training_exercise (fk_exercise, fk_training) VALUES (?, ?);");
     if (!$stmt) {
-        header('Location: /register.php?ms=db&name=' . $name);
+        header('Location: ../register.php?ms=db&name=' . $name);
         exit();
     }
     $stmt->bind_param('ii', $id_exercise, $id_training);

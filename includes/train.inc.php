@@ -44,7 +44,7 @@ if (isset($_POST['train_submit'])) {
     $stmt->bind_param('iis', $id, $tid, $time);
     $stmt->execute();
     $stmt->close();
-    header('Location: /training.php?');
+    header('Location: ../training.php?');
 }
 
 

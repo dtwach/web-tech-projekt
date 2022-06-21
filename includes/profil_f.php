@@ -7,22 +7,22 @@ if (isset($_POST['change_pwd_submit'])) {
     $password = htmlspecialchars($_POST['password']);
     $password_again = htmlspecialchars($_POST['password_again']);
     if (empty($password_current) || empty($password) || empty($password)) {
-        header('Location: /profil.php?ms=empty');
+        header('Location: ../profil.php?ms=empty');
         exit();
     }
     if ($password !== $password_again) {
-        header('Location: /profil.php?ms=even');
+        header('Location: ../profil.php?ms=even');
         exit();
     }
     $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
     if (!$stmt) {
-        header('Location: /profil.php?ms=db');
+        header('Location: ../profil.php?ms=db');
         exit();
     }
     $stmt->bind_param('s', $name);
     $stmt->execute();
     if (!$stmt) {
-        header('Location: /profil.php?ms=db');
+        header('Location: ../profil.php?ms=db');
         exit();
     }
     $result = $stmt->get_result();
@@ -30,7 +30,7 @@ if (isset($_POST['change_pwd_submit'])) {
 
     $check = password_verify($password_current, $row['passwordhash']);
     if (!$check) {
-        header('Location: /profil.php?ms=wrong');
+        header('Location: ../profil.php?ms=wrong');
         exit();
     }
     $passwordhash = password_hash($password, PASSWORD_DEFAULT);
@@ -39,7 +39,7 @@ if (isset($_POST['change_pwd_submit'])) {
     $stmt->bind_param('ss', $passwordhash, $name);
     $stmt->execute();
     if ($stmt) {
-        header('Location: /profil.php?ms=success');
+        header('Location: ../profil.php?ms=success');
         exit();
     }
     $con->close();
@@ -52,24 +52,24 @@ if (isset($_POST['change_user_submit'])) {
     $name_new = htmlspecialchars($_POST['name']);
 
     if (empty($name_new)) {
-        header('Location: /profil.php?ms=empty');
+        header('Location: ../profil.php?ms=empty');
         exit();
     }
     $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
     if (!$stmt) {
-        header('Location: /profil.php?ms=db');
+        header('Location: ../profil.php?ms=db');
         exit();
     }
     $stmt->bind_param('s', $name_new);
     $stmt->execute();
     if (!$stmt) {
-        header('Location: /profil.php?ms=db');
+        header('Location: ../profil.php?ms=db');
         exit();
     }
     $stmt->store_result();
     $result = $stmt->num_rows();
     if ($result > 0) {
-        header('Location: /profil.php?ms=taken&name=' . $name);
+        header('Location: ../profil.php?ms=taken&name=' . $name);
         exit();
     } else {
         $stmt->close();
@@ -77,7 +77,7 @@ if (isset($_POST['change_user_submit'])) {
         $stmt->bind_param('ss', $name_new, $name);
         $stmt->execute();
         if ($stmt) {
-            header('Location: /success.php');
+            header('Location: ../success.php');
         }
         $stmt->close();
         $con->close();

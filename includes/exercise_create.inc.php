@@ -7,15 +7,15 @@ function check_file($file)
     $strip = explode('.', $file['name']);
     $file_extension = end($strip);
     if ($file['error'] !== 0) {
-        header('Location: /exercise_create.php?ms=error');
+        header('Location: ../exercise_create.php?ms=error');
         exit();
     }
     if ($file['size'] > 3000000) {
-        header('Location: /exercise_create.php?ms=size');
+        header('Location: ../exercise_create.php?ms=size');
         exit();
     }
     if (!in_array($file_extension, $filter_arr)) {
-        header('Location: /exercise_create.php?ms=format');
+        header('Location: ../exercise_create.php?ms=format');
         exit();
     }
     return file_get_contents($file['tmp_name']);
@@ -28,7 +28,7 @@ function compare_ex_name($name_ex)
     require 'dbcon_f.php';
     $stmt = $con->prepare("SELECT * FROM exercise WHERE name=?;");
     if (!$stmt) {
-        header('Location: /exercise_create.php?ms=db');
+        header('Location: ../exercise_create.php?ms=db');
         exit();
     }
     $stmt->bind_param('s', $name_ex);
@@ -41,7 +41,7 @@ function compare_ex_name($name_ex)
     $name_low = strtolower($name_ex);
     $result_low = strtolower($result['name']);
     if ($name_low === $result_low) {
-        header('Location: /exercise_create.php?ms=taken');
+        header('Location: ../exercise_create.php?ms=taken');
         exit();
     }
 }
@@ -58,7 +58,7 @@ if (isset($_POST['exercise_submit'])) {
     }
 
     if (empty($name_ex) || empty($description)) {
-        header('Location: /exercise_create.php?ms=empty');
+        header('Location: ../exercise_create.php?ms=empty');
         exit();
     }
 
@@ -72,16 +72,16 @@ if (isset($_POST['exercise_submit'])) {
 
     $stmt = $con->prepare("INSERT INTO exercise (name, description, fk_user, picture) VALUES (?, ?, ?, ?);");
     if (!$stmt) {
-        header('Location: /exercise_create.php?ms=db');
+        header('Location: ../exercise_create.php?ms=db');
         exit();
     }
     $stmt->bind_param('ssss', $name_ex, $description, $id, $blob);
     $stmt->execute();
     if (!$stmt) {
-        header('Location: /exercise_create.php?ms=fail');
+        header('Location: ../exercise_create.php?ms=fail');
         exit();
     }
-    header('Location: /exercise_create.php?ms=success');
+    header('Location: ../exercise_create.php?ms=success');
     $stmt->close();
     $con->close();
 }

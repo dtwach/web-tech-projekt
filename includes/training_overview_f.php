@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['training_overview_submit'])){
+if (isset($_POST['training_overview_submit'])) {
     require 'dbcon_f.php';
     session_start();
     $id_training = intval($_POST['training_id']);
@@ -7,11 +7,10 @@ if (isset($_POST['training_overview_submit'])){
     $stmt = $con->prepare("UPDATE user SET active_training=? WHERE id=?");
     $stmt->bind_param('ii', $id_training, $id_user);
     $stmt->execute();
-    if($stmt) {
-        header('Location: /success.php');
+    if ($stmt) {
+        header('Location: ../success.php');
     }
     $stmt->close();
     $_SESSION['tid'] = $id_training;
-    header('Location: /training_overview.php');
-    
+    header('Location: ../training_overview.php');
 }

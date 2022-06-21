@@ -6,18 +6,18 @@ if (isset($_POST['register_submit'])) {
     $password_again = htmlspecialchars($_POST['password_again']);
     if (empty($name) || empty($password) || empty($password_again)) {
         if (empty($name)) {
-            header('Location: /register.php?ms=empty');
+            header('Location: ../register.php?ms=empty');
             exit();
         }
-        header('Location: /register.php?ms=empty&name=' . $name);
+        header('Location: ../register.php?ms=empty&name=' . $name);
         exit();
     } else if ($password !== $password_again) {
-        header('Location: /register.php?ms=even&name=' . $name);
+        header('Location: ../register.php?ms=even&name=' . $name);
         exit();
     } else {
         $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
         if (!$stmt) {
-            header('Location: /register.php?ms=db&name=' . $name);
+            header('Location: ../register.php?ms=db&name=' . $name);
             exit();
         }
         $stmt->bind_param('s', $name);
@@ -25,13 +25,13 @@ if (isset($_POST['register_submit'])) {
         $stmt->store_result();
         $result = $stmt->num_rows();
         if ($result > 0) {
-            header('Location: /register.php?ms=taken&name=' . $name);
+            header('Location: ../register.php?ms=taken&name=' . $name);
             exit();
         } else {
             $stmt->close();
             $stmt = $con->prepare("INSERT INTO user (name, passwordhash, time) VALUES (?, ?, ?);");
             if (!$stmt) {
-                header('Location: /register.php?ms=db&name=' . $name);
+                header('Location: ../register.php?ms=db&name=' . $name);
                 exit();
             }
             $passwordhash = password_hash($password, PASSWORD_DEFAULT);
@@ -39,12 +39,12 @@ if (isset($_POST['register_submit'])) {
             $stmt->bind_param('sss', $name, $passwordhash, $timestamp);
             $stmt->execute();
             if (!$stmt) {
-                header('Location: /register.php?ms=fail&name=' . $name);
+                header('Location: ../register.php?ms=fail&name=' . $name);
             }
             session_start();
             $_SESSION['user'] = $name;
             $_SESSION['id'] = $row['id'];
-            header('Location: /start.php');
+            header('Location: ../start.php');
         }
     }
     $stmt->close();
