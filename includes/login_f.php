@@ -1,16 +1,16 @@
 <?php
-if (isset($_POST['login_submit'])){
+if (isset($_POST['login_submit'])) {
     require 'dbcon_f.php';
     $name = $_POST['name'];
     $password = $_POST['password'];
-    if(empty($name) || empty($password)){
-        header('Location: /login.php?ms=empty&name='.$name);
+    if (empty($name) || empty($password)) {
+        header('Location: /login.php?ms=empty&name=' . $name);
         exit();
     } else {
-        $con = mysqli_connect('localhost','root','','fitnesstracker');
+        $con = mysqli_connect('localhost', 'root', '', 'fitnesstracker');
         $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
-        if (!$stmt){
-            header('Location: /login.php?ms=db&name='.$name);
+        if (!$stmt) {
+            header('Location: /login.php?ms=db&name=' . $name);
             exit();
         }
         $stmt->bind_param('s', $name);
@@ -19,20 +19,20 @@ if (isset($_POST['login_submit'])){
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        if (!$stmt){
-            header('Location: /login.php?ms=notfound&true='.$name);
+        if (!$stmt) {
+            header('Location: /login.php?ms=notfound&true=' . $name);
             exit();
-        } else { 
+        } else {
             $check = password_verify($password, $row['passwordhash']);
         }
 
-        if(!$check){
-            header('Location: /login.php?ms=wrong&name='.$name);
+        if (!$check) {
+            header('Location: /login.php?ms=wrong&name=' . $name);
         } else {
             session_start();
             $_SESSION['user'] = $row['name'];
             $_SESSION['id'] = $row['id'];
-            if(!is_null($row['active_training'])){
+            if (!is_null($row['active_training'])) {
                 $_SESSION['tid'] = $row['active_training'];
             }
             header('Location: /start.php');
@@ -41,4 +41,3 @@ if (isset($_POST['login_submit'])){
         $con->close();
     }
 }
-?>

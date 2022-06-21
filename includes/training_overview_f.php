@@ -15,4 +15,3 @@ if (isset($_POST['training_overview_submit'])){
     header('Location: /training_overview.php');
     
 }
-?>

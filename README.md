@@ -1,8 +1,7 @@
-Fitness-Tracker! 
+Fitness-Tracker!
 von Kai und Dennis!
 UNIQUE Key bei user->name einfügen in DB.
 Tabelle exercise beschreibung->description.
-
 
     $file_name = $_FILES['file']['name'];
     $tmp_name  = $_FILES['file']['tmp_name'];
@@ -17,17 +16,18 @@ Tabelle exercise beschreibung->description.
 
 
 
-    //Prüfen, wechle Dateiformate php erlaubt. 
+    //Prüfen, wechle Dateiformate php erlaubt.
+
 function check_file($file){
     $filter_arr = array('png', 'jpg', 'pdf', 'jpeg');
     $strip = explode('.',$file['name']);
-    $file_extension = end($strip);
-    print_r($file);
+$file_extension = end($strip);
+print_r($file);
     if($file['error'] !== 0){
-        header('Location: /exercise_create.php?ms=error');
-        exit();
-    }    
-    if($file['size'] > 200000){
+header('Location: /exercise_create.php?ms=error');
+exit();
+}  
+ if($file['size'] > 200000){
         header('Location: /exercise_create.php?ms=size');
         exit();
     }

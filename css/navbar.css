@@ -1,85 +1,85 @@
 /*Navigation bar*/
 .nav_container {
-    height: 35px;
-    border-radius: 3px;
-    display: flex;
-    background-color:  #80ba24;
-    position: sticky;
-    top: 0px;
+  height: 35px;
+  border-radius: 3px;
+  display: flex;
+  background-color: #80ba24;
+  position: sticky;
+  top: 0px;
 }
 .nav_item {
-    border-radius: 0px;
-    background-color: #80ba24;
-    padding: 10px;
-    width: 100px;
-    text-align: center;
-    margin-right: 3px;
-    color:rgb(0, 0, 0);
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight: bold; 
+  border-radius: 0px;
+  background-color: #80ba24;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  margin-right: 3px;
+  color: rgb(0, 0, 0);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
-.nav_item:hover, .nav_item:active {
-    background-color: #94d629  ;
+.nav_item:hover,
+.nav_item:active {
+  background-color: #94d629;
 }
 
-.nav_item:link, .nav_item:visited {
-    text-decoration: none;
-    color: inherit;
+.nav_item:link,
+.nav_item:visited {
+  text-decoration: none;
+  color: inherit;
 }
 
 .right {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .last_item {
-    margin-right: 0px;
+  margin-right: 0px;
 }
 
 /*Navigation dropdown items*/
 /*Training*/
-.training_dropdown  {
-    display: none;
-    position: absolute;
- 
+.training_dropdown {
+  display: none;
+  position: absolute;
 }
 
-
 .training_dropdown a {
-    color: black;
-    text-decoration: none;
-    display: block;
-   
-  }
+  color: black;
+  text-decoration: none;
+  display: block;
+}
 
-.training_dropdown a:hover {background-color: #94d629;}
+.training_dropdown a:hover {
+  background-color: #94d629;
+}
 
 .training_item:hover .training_dropdown {
-    display: block;
-    margin-top: 5px;
-    margin-left: -10px;
-    border-radius: 0px;
+  display: block;
+  margin-top: 5px;
+  margin-left: -10px;
+  border-radius: 0px;
 }
 
 /*Übung*/
-.uebung_dropdown  {
-    display: none;
-    position: absolute;
- 
+.uebung_dropdown {
+  display: none;
+  position: absolute;
 }
 .uebung_dropdown a {
-    color: black;
-    text-decoration: none;
-    display: block;
-   
-  }
-
-.uebung_dropdown a:hover {background-color: #94d629;}
-
-.uebung_item:hover .uebung_dropdown {
-    display: block;
-    margin-top: 5px;
-    margin-left: -10px;
-    border-radius: 0px;
+  color: black;
+  text-decoration: none;
+  display: block;
 }
 
+.uebung_dropdown a:hover {
+  background-color: #94d629;
+}
+
+.uebung_item:hover .uebung_dropdown {
+  display: block;
+  margin-top: 5px;
+  margin-left: -10px;
+  border-radius: 0px;
+}

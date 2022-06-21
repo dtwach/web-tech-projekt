@@ -1,12 +1,12 @@
 <?php
-if (isset($_POST['change_pwd_submit'])){
+if (isset($_POST['change_pwd_submit'])) {
     require 'dbcon_f.php';
     session_start();
     $name = $_SESSION['user'];
     $password_current = $_POST['password_current'];
     $password = $_POST['password'];
     $password_again = $_POST['password_again'];
-    if(empty($password_current) || empty ($password) || empty ($password)){
+    if (empty($password_current) || empty($password) || empty($password)) {
         header('Location: /profil.php?ms=empty');
         exit();
     }
@@ -15,7 +15,7 @@ if (isset($_POST['change_pwd_submit'])){
         exit();
     }
     $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
-    if (!$stmt){
+    if (!$stmt) {
         header('Location: /profil.php?ms=db');
         exit();
     }
@@ -29,7 +29,7 @@ if (isset($_POST['change_pwd_submit'])){
     $row = $result->fetch_assoc();
 
     $check = password_verify($password_current, $row['passwordhash']);
-    if(!$check) {
+    if (!$check) {
         header('Location: /profil.php?ms=wrong');
         exit();
     }
@@ -38,25 +38,25 @@ if (isset($_POST['change_pwd_submit'])){
     $stmt = $con->prepare("UPDATE user SET passwordhash=? WHERE name=?");
     $stmt->bind_param('ss', $passwordhash, $name);
     $stmt->execute();
-    if($stmt) {
+    if ($stmt) {
         header('Location: /profil.php?ms=success');
         exit();
     }
-    $con->close();    
+    $con->close();
 }
 
-if (isset($_POST['change_user_submit'])){
+if (isset($_POST['change_user_submit'])) {
     require 'dbcon_f.php';
     session_start();
     $name = $_SESSION['user'];
     $name_new = $_POST['name'];
 
-    if(empty($name_new)){
+    if (empty($name_new)) {
         header('Location: /profil.php?ms=empty');
         exit();
     }
     $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
-    if (!$stmt){
+    if (!$stmt) {
         header('Location: /profil.php?ms=db');
         exit();
     }
@@ -68,19 +68,18 @@ if (isset($_POST['change_user_submit'])){
     }
     $stmt->store_result();
     $result = $stmt->num_rows();
-        if ($result > 0){
-            header('Location: /profil.php?ms=taken&name='.$name);
-            exit();
-        } else {
-            $stmt->close();
-            $stmt = $con->prepare("UPDATE user SET name=? WHERE name=?");
-            $stmt->bind_param('ss', $name_new, $name);
-            $stmt->execute();
-            if($stmt) {
-                header('Location: /success.php');
-            }
-            $stmt->close();
-            $con->close();    
-
+    if ($result > 0) {
+        header('Location: /profil.php?ms=taken&name=' . $name);
+        exit();
+    } else {
+        $stmt->close();
+        $stmt = $con->prepare("UPDATE user SET name=? WHERE name=?");
+        $stmt->bind_param('ss', $name_new, $name);
+        $stmt->execute();
+        if ($stmt) {
+            header('Location: /success.php');
         }
+        $stmt->close();
+        $con->close();
+    }
 }

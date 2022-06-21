@@ -1,16 +1,16 @@
 <?php
-if(isset($_POST['train_submit'])){
+if (isset($_POST['train_submit'])) {
     include 'dbcon_f.php';
     $count = 0;
-    $id =$_POST['a_id_a'];
+    $id = $_POST['a_id_a'];
     $tid = $_POST['a_tid_a'];
     $time = date('Y-m-d H:i:s');
 
-    
-    foreach($_POST as $key => $value){
+
+    foreach ($_POST as $key => $value) {
         var_dump($key);
         $expl = explode('_', $key);
-        switch ($expl[1]){
+        switch ($expl[1]) {
             case 'fkex':
                 $fk_exercise = $expl[0];
                 break;
@@ -31,19 +31,19 @@ if(isset($_POST['train_submit'])){
         }
         $count++;
 
-        if($count > 4){
+        if ($count > 4) {
             $stmt = $con->prepare("INSERT INTO eset (rep, weight, fk_exercise, fk_training, comment, type, number, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
-            $stmt->bind_param('idiissis', $rep, $weight, $fk_exercise, $tid, $comment, $type, $expl[2], $time );
+            $stmt->bind_param('idiissis', $rep, $weight, $fk_exercise, $tid, $comment, $type, $expl[2], $time);
             $stmt->execute();
             $stmt->close();
-            $count = 0;        
+            $count = 0;
         }
     }
 
     $stmt = $con->prepare("INSERT INTO user_training (fk_user, fk_training, time) VALUES (?, ?, ?);");
     $stmt->bind_param('iis', $id, $tid, $time);
     $stmt->execute();
-    $stmt->close();    
+    $stmt->close();
     header('Location: /training.php?');
 }
 
