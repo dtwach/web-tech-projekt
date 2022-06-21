@@ -1,15 +1,14 @@
 /*Navigation bar*/
 .nav_container {
   height: 35px;
-  border-radius: 3px;
+  border-radius: 5px;
   display: flex;
   background-color: #80ba24;
   position: sticky;
   top: 0px;
 }
 .nav_item {
-  border-radius: 0px;
-  background-color: #80ba24;
+  border-radius: 5px;
   padding: 10px;
   width: 100px;
   text-align: center;
@@ -41,6 +40,8 @@
 /*Navigation dropdown items*/
 /*Training*/
 .training_dropdown {
+  border: 0px;
+  background-color: #80ba24;
   display: none;
   position: absolute;
 }
@@ -64,8 +65,10 @@
 
 /*Übung*/
 .uebung_dropdown {
+  border: 0px;
   display: none;
   position: absolute;
+  background-color: #80ba24;
 }
 .uebung_dropdown a {
   color: black;
