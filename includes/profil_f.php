@@ -3,9 +3,9 @@ if (isset($_POST['change_pwd_submit'])) {
     require 'dbcon_f.php';
     session_start();
     $name = $_SESSION['user'];
-    $password_current = $_POST['password_current'];
-    $password = $_POST['password'];
-    $password_again = $_POST['password_again'];
+    $password_current = htmlspecialchars($_POST['password_current']);
+    $password = htmlspecialchars($_POST['password']);
+    $password_again = htmlspecialchars($_POST['password_again']);
     if (empty($password_current) || empty($password) || empty($password)) {
         header('Location: /profil.php?ms=empty');
         exit();
@@ -49,7 +49,7 @@ if (isset($_POST['change_user_submit'])) {
     require 'dbcon_f.php';
     session_start();
     $name = $_SESSION['user'];
-    $name_new = $_POST['name'];
+    $name_new = htmlspecialchars($_POST['name']);
 
     if (empty($name_new)) {
         header('Location: /profil.php?ms=empty');

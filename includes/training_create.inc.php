@@ -49,8 +49,8 @@ if (isset($_POST['training_submit'])) {
     session_start();
     $name = $_SESSION['user'];
     $id = $_SESSION['id'];
-    $name_ex = $_POST['name_ex'];
-    $description = $_POST['description'];
+    $name_ex = htmlspecialchars($_POST['name_ex']);
+    $description = htmlspecialchars($_POST['description']);
     if (!empty($_FILES['file'])) {
         $file = $_FILES['file'];
     }

@@ -15,16 +15,16 @@ if (isset($_POST['train_submit'])) {
                 $fk_exercise = $expl[0];
                 break;
             case 'rep':
-                $rep = (isset($value)) ? $value : 0;
+                $rep = (isset($value)) ? htmlspecialchars($value) : 0;
                 break;
             case 'weight':
-                $weight = (isset($value)) ? $value : 0;
+                $weight = (isset($value)) ? htmlspecialchars($value) : 0;
                 break;
             case 'comment':
-                $comment = (isset($value)) ? $value : '';
+                $comment = (isset($value)) ? htmlspecialchars($value) : '';
                 break;
             case 'type':
-                $type = (isset($value)) ? $value : '';
+                $type = (isset($value)) ? htmlspecialchars($value) : '';
                 break;
             default:
                 break;

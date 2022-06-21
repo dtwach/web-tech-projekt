@@ -1,9 +1,9 @@
 <?php
 if (isset($_POST['register_submit'])) {
     require 'dbcon_f.php';
-    $name = $_POST['name'];
-    $password = $_POST['password'];
-    $password_again = $_POST['password_again'];
+    $name = htmlspecialchars($_POST['name']);
+    $password = htmlspecialchars($_POST['password']);
+    $password_again = htmlspecialchars($_POST['password_again']);
     if (empty($name) || empty($password) || empty($password_again)) {
         if (empty($name)) {
             header('Location: /register.php?ms=empty');
