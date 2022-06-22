@@ -23,7 +23,10 @@ function check_file($file)
 function compare_ex_name($name_ex, $id)
 {
     require 'dbcon_f.php';
-    $stmt = $con->prepare("SELECT * FROM training WHERE name=? AND fk_user=?;");
+    $stmt = $con->prepare("SELECT DISTINCT(user_training.fk_training), training.id, training.name
+    FROM user_training
+    JOIN training ON training.id = user_training.fk_training
+    WHERE training.name=? AND user_training.fk_user=?;");
     if (!$stmt) {
         header('Location: ../training_create.php?ms=db');
         exit();
@@ -68,12 +71,12 @@ if (isset($_POST['training_submit'])) {
         $blob = file_get_contents('tmp/pic.png');
     }
 
-    $stmt = $con->prepare("INSERT INTO training (name, description, fk_user, picture) VALUES (?, ?, ?, ?);");
+    $stmt = $con->prepare("INSERT INTO training (name, description, picture) VALUES (?, ?, ?);");
     if (!$stmt) {
         header('Location: ../training_create.php?ms=db');
         exit();
     }
-    $stmt->bind_param('ssss', $name_ex, $description, $id, $blob);
+    $stmt->bind_param('sss', $name_ex, $description, $blob);
     $stmt->execute();
     if (!$stmt) {
         header('Location: ../training_create.php?ms=fail');
@@ -82,7 +85,8 @@ if (isset($_POST['training_submit'])) {
     $stmt->close();
 
     $tid = get_single_training_id($name_ex);
-    add_user_training($id, $tid);
+    var_dump($_SESSION['id']);
+    add_user_training($_SESSION['id'], $tid);
 
     header('Location: ../training_create.php?ms=success');
     $con->close();

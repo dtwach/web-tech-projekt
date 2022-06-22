@@ -16,7 +16,6 @@ include 'includes/navbar.php';
     <?php
     include 'includes/functions.php';
     $result_exercises = get_active_exercises();
-    //  $result_set = get_train_unit();
     while ($row_ex = $result_exercises->fetch_assoc()) {
         echo '
             <form id="train_table" method="POST" action="/includes/train.inc.php">
