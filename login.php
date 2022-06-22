@@ -2,7 +2,7 @@
 <html lang="de">
 
 <head>
-    <title>PHP: Basics</title>
+    <title>Login</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/logregdivs.css">
 </head>

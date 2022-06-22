@@ -2,7 +2,6 @@
 <html lang="de">
 
 <head>
-    <title>Logo</title>
     <link rel="stylesheet" href="./css/logo.css">
 </head>
 

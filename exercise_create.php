@@ -6,7 +6,7 @@ include 'includes/navbar.php';
 <html lang="de">
 
 <head>
-    <title>PHP: Basics</title>
+    <title>Übung erstellen</title>
     <link rel="stylesheet" href="css/navbar.css">
 </head>
 

@@ -6,7 +6,7 @@ include 'includes/navbar.php';
 <html lang="de">
 
 <head>
-    <title>PHP: Basics</title>
+    <title>Training Starten</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/table.css">
 </head>
@@ -14,7 +14,7 @@ include 'includes/navbar.php';
 <body>
     <h2>Alle Trainings</h2>
     <?php
-    if (isset($_SESSION['tid'])){
+    if (isset($_SESSION['tid'])) {
         include 'includes/functions.php';
         $result = get_single_training_active();
         $row = $result->fetch_assoc();
@@ -27,10 +27,10 @@ include 'includes/navbar.php';
                     <button type="submit">Starten</button> <br>
                 </form>
                 ';
-    
-    
+
+
         $result = get_training_all_sets($row['id']);
-        if($result->num_rows > 0){
+        if ($result->num_rows > 0) {
             $data = $result->fetch_all();
             $arr = array();
             $arr_tmp = array();
@@ -54,7 +54,7 @@ include 'includes/navbar.php';
                 $data_count++;
                 $max_sets = ($max_sets < $item[4]) ? $item[4] : $max_sets;
             }
-        
+
             echo '<table>          
                 <tr>
                 <th>Übung</th>';
@@ -64,9 +64,9 @@ include 'includes/navbar.php';
                     echo '</tr>';
                 }
             }
-        
+
             foreach ($arr as $item) {
-        
+
                 for ($i = 0; $i < $max_sets; $i++) {
                     if ($i == 0) {
                         echo '<tr>';
@@ -80,11 +80,11 @@ include 'includes/navbar.php';
                     }
                 }
             }
-            echo '</table> <br> <br>';            
-        } else{
+            echo '</table> <br> <br>';
+        } else {
             echo '<p>Starten Sie zunächst Ihr erstes Training!</p>';
         }
-    } else{
+    } else {
         echo '<p>Bitte setzten Sie zunächst Ihr aktives Training fest.
          Diese finden Sie unter Training => Alle Trainings.</p>';
     }

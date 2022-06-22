@@ -6,10 +6,10 @@ include 'includes/navbar.php';
 <html lang="de">
 
 <head>
-    <title>PHP: Basics</title>
+    <title>Übungen</title>
     <link rel="stylesheet" href="css/navbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/js/exercise.js"></script>
+    <script src="js/exercise.js"></script>
 
 </head>
 
@@ -20,9 +20,9 @@ include 'includes/navbar.php';
 
     include 'includes/functions.php';
     $result = get_exercises();
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $result_training = get_all_training_id_name();
-    
+
         while ($row = $result->fetch_assoc()) {
             echo '
             <a href="exercise.php?name=' . $row['name'] . '"<h3>' . $row['name'] . '</h3></a>
@@ -44,12 +44,12 @@ include 'includes/navbar.php';
             <button  id="' . $row['id'] . '" onClick="training_add_submit(this.id)" name="training_add" type="button">Hinzufügen</button>
             </form>';
         }
-    }else{
+    } else {
         echo '<p>Bitte legen Sie zunächst eine Übung an.
         Diese finden Sie unter Übungen => Übung erstellen.</p>';
     }
     ?>
-        
+
 </body>
 
 </html>

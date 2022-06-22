@@ -6,7 +6,7 @@ include 'includes/navbar.php';
 <html lang="de">
 
 <head>
-    <title>PHP: Basics</title>
+    <title>Alle Trainings</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/table.css">
 </head>
@@ -17,7 +17,7 @@ include 'includes/navbar.php';
     <?php
     include 'includes/functions.php';
     $result = get_all_training();
-    if($result->num_rows > 0){        
+    if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo '
                 <a href="training.php?name=' . $row['name'] . '"<h3>' . $row['name'] . '</h3></a>
@@ -30,7 +30,7 @@ include 'includes/navbar.php';
                 </form>
                 ';
         }
-    }else{
+    } else {
         echo '<p>Bitte legen Sie zunächst ein Training an.
         Dies finden Sie unter Training => Training erstellen.</p>';
     }
