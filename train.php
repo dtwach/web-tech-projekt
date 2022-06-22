@@ -18,7 +18,7 @@ include 'includes/navbar.php';
     $result_exercises = get_active_exercises();
     while ($row_ex = $result_exercises->fetch_assoc()) {
         echo '
-            <form id="train_table" method="POST" action="/includes/train.inc.php">
+            <form id="train_table" method="POST" action="includes/train.inc.php">
             <table> 
             <tr> 
             <th>' . $row_ex["name"] . '</th>
