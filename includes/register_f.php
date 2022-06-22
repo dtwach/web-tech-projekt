@@ -50,7 +50,7 @@ if (isset($_POST['register_submit'])) {
             session_start();
             $_SESSION['user'] = $name;
             $_SESSION['id'] = $result['id'];
-            header('Location: ../start.php');
+            header('Location: ../index.php');
         }
     }
     $stmt->close();
