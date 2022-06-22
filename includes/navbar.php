@@ -6,7 +6,7 @@ include 'login_session.php';
 <html lang="de">
 
 <head>
-    <title>PHP: Basics</title>
+    <title>Navbar</title>
     <link rel="stylesheet" href="css/navbar.css">
 </head>
 
