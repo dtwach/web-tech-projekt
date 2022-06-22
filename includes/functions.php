@@ -73,21 +73,6 @@ function get_active_exercises()
     return $result;
 }
 
-function get_train_unit()
-{
-    include 'dbcon_f.php';
-    $stmt = $con->prepare("SELECT exercise.id, exercise.name, eset.fk_exercise, eset.id, eset.rep, eset.weight, eset.type, eset.comment 
-    FROM exercise 
-    JOIN training_exercise on exercise.id = training_exercise.fk_exercise 
-    JOIN eset on eset.fk_exercise = exercise.id
-    WHERE training_exercise.fk_training=?;");
-    $stmt->bind_param('i', $_SESSION['tid']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt->close();
-    return $result;
-}
-
 function get_training_all_sets($tid)
 {
     include 'dbcon_f.php';

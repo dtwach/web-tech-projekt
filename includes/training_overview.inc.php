@@ -12,5 +12,5 @@ if (isset($_POST['training_overview_submit'])) {
     }
     $stmt->close();
     $_SESSION['tid'] = $id_training;
-    header('Location: ../training_overview.php');
+    header('Location: ../training.php');
 }

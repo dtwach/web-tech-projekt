@@ -41,9 +41,15 @@ if (isset($_POST['register_submit'])) {
             if (!$stmt) {
                 header('Location: ../register.php?ms=fail&name=' . $name);
             }
+            $stmt->close();
+            $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
+            $stmt->bind_param('s', $name);
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
             session_start();
             $_SESSION['user'] = $name;
-            $_SESSION['id'] = $row['id'];
+            $_SESSION['id'] = $result['id'];
             header('Location: ../start.php');
         }
     }
