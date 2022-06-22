@@ -35,7 +35,7 @@ if (isset($_POST['login_submit'])) {
             if (!is_null($row['active_training'])) {
                 $_SESSION['tid'] = $row['active_training'];
             }
-            header('Location: ../start.php');
+            header('Location: ../index.php');
         }
         $stmt->close();
         $con->close();
