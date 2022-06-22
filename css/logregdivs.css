@@ -8,10 +8,17 @@
 }
 .borderpadding {
   padding: 0px 16px 16px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 25px;
+}
+form {
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 input,
 button {
+  border: 1px solid black;
+  border-radius: 3px;
   margin-bottom: 16px;
 }
