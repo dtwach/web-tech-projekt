@@ -1,5 +1,6 @@
 <?php
 include 'login_session.php';
+include 'logo.php';
 ?>
 
 <!doctype html>
@@ -7,7 +8,7 @@ include 'login_session.php';
 
 <head>
     <title>Navbar</title>
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="../css/navbar.css">
 </head>
 
 <body>

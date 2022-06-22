@@ -1,0 +1,25 @@
+/*Logo*/
+.logo_container {
+  display: flex;
+}
+.logo_item {
+  padding: 5px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: medium;
+}
+.logo_item p {
+  display: inline-block;
+  line-height: normal;
+  vertical-align: middle;
+}
+.mid {
+  margin-left: auto;
+}
+
+.last_item {
+  margin-right: 0px;
+}
