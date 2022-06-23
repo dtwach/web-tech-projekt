@@ -52,6 +52,8 @@ include 'includes/navbar.php';
                 }
                 $arr_tmp[$i++] = $item[2];
                 $arr_tmp[$i++] = $item[3];
+                $arr_tmp[$i++] = $item[6];
+                $arr_tmp[$i++] = $item[7];
                 $data_count++;
                 $max_sets = ($max_sets < $item[4]) ? $item[4] : $max_sets;
             }
@@ -60,14 +62,13 @@ include 'includes/navbar.php';
                 <tr>
                 <th>Übung</th>';
             for ($i = 0; $i < $max_sets; $i++) {
-                echo '<th colspan="2">Satz ' . ($i + 1) . '</th>';
+                echo '<th colspan="4">Satz ' . ($i + 1) . '</th>';
                 if ($i == $max_sets) {
                     echo '</tr>';
                 }
             }
 
             foreach ($arr as $item) {
-
                 for ($i = 0; $i < $max_sets; $i++) {
                     if ($i == 0) {
                         echo '<tr>';
@@ -75,7 +76,9 @@ include 'includes/navbar.php';
                     }
                     echo '
                         <td>' . $item[1] . '</td>
-                        <td>' . $item[2] . '</td>';
+                        <td>' . $item[2] . '</td>
+                        <td>' . $item[3] . '</td>
+                        <td>' . $item[4] . '</td>';
                     if ($i == $max_sets) {
                         echo '</tr>';
                     }

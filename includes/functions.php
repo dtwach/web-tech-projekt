@@ -76,7 +76,7 @@ function get_active_exercises()
 function get_training_all_sets($tid)
 {
     include 'dbcon_f.php';
-    $stmt = $con->prepare("SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number, user_training.time
+    $stmt = $con->prepare("SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number, user_training.time, eset.type, eset.comment
     FROM training    
     JOIN user_training on user_training.fk_training = training.id
     JOIN eset on eset.time = user_training.time
