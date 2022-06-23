@@ -23,12 +23,14 @@ include 'includes/navbar.php';
                 <h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
                 <p style="width:30%;">' . $row['description'] . '</p> 
                 <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
-                <br>
-                <form action="includes/training_overview.inc.php" method="post">
+                <br>';
+                if($_SESSION['tid'] != $row['id']){
+                    echo '<form action="includes/training_overview.inc.php" method="post">
                     <input type="hidden" name="training_id" value="' . $row['id'] . '" > <br>
                     <button type="submit" name="training_overview_submit">Aktivieren</button> <br>
-                </form>
-                ';
+                    </form>
+                    ';
+                }
         }
     } else {
         echo '<p>Bitte legen Sie zunächst ein Training an.
