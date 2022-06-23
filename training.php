@@ -14,12 +14,13 @@ include 'includes/navbar.php';
 <body>
     <h2>Alle Trainings</h2>
     <?php
-    if (isset($_SESSION['tid'])) {
+    $tid = isset($_GET['training'])? $_GET['training'] : NULL;
+    if (isset($_SESSION['tid']) || isset($tid)) {
         include 'includes/functions.php';
-        $result = get_single_training_active();
+        $result = isset($tid) ? get_single_training_active($tid) : get_single_training_active($_SESSION['tid']);
         $row = $result->fetch_assoc();
         echo '
-                <a href="training.php?name=' . $row['name'] . '"<h3>' . $row['name'] . '</h3></a>
+                <a href="training.php?training=' . $row['id'] . '"<h3>' . $row['name'] . '</h3></a>
                 <p style="width:30%;">' . $row['description'] . '</p> 
                 <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
                 <br>
@@ -82,7 +83,7 @@ include 'includes/navbar.php';
             }
             echo '</table> <br> <br>';
         } else {
-            echo '<p>Starten Sie zunächst Ihr erstes Training!</p>';
+            echo '<p>Führen Sie zunächst Ihr Training aus.</p>';
         }
     } else {
         echo '<p>Bitte setzten Sie zunächst Ihr aktives Training fest.

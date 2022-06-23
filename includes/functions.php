@@ -44,15 +44,15 @@ function get_all_training()
     return $result;
 }
 
-function get_single_training_active()
+function get_single_training_active($tid)
 {
     include 'dbcon_f.php';
     $stmt = $con->prepare("SELECT DISTINCT(user_training.fk_training), training.id, training.name,
     training.description, training.picture
     FROM user_training
     JOIN training ON training.id = user_training.fk_training
-    WHERE user_training.fk_training=?;");
-    $stmt->bind_param('i', $_SESSION['tid']);
+    WHERE user_training.fk_training=? AND user_training.fk_user=?;");
+    $stmt->bind_param('ii', $tid, $_SESSION['id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();

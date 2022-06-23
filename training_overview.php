@@ -20,7 +20,7 @@ include 'includes/navbar.php';
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo '
-                <h3><a href="training.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>
+                <h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
                 <p style="width:30%;">' . $row['description'] . '</p> 
                 <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
                 <br>
