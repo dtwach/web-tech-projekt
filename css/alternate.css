@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.alt {
+  text-align: center;
+  border: 1px solid black;
+  margin: 4px;
+  padding: 4px;
+  border-radius: 4pt;
+}

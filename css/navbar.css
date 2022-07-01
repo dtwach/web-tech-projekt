@@ -86,3 +86,6 @@
   margin-left: -10px;
   border-radius: 0px;
 }
+body {
+  zoom: 125%;
+}
