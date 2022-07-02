@@ -37,12 +37,24 @@ include 'includes/navbar.php';
             $arr_tmp = array();
             $tmp = '';
             $i = 0;
-            $max_sets = 0;
-            $data_count_max = count($data);
-            $data_count = 0;
+            $max_sets = 0; //Bestimmt die Maximalen Sets             
+            $data_count_max = count($data); //Maximale länge des Arrays
+            $data_count = 0; //Für die Bestimmung, dann die Maximale Array länge gefunden ist
+            //Holt jeden Satz der Reihe nach ab. Sortiert nach
+            //den Namen. Gibt diesen als Array aus.
             foreach ($data as $item) {
-                if ($tmp != $item[0] | ($data_count + 1) == $data_count_max) {
+                //Sobald eine tmp einen anderen Namen bekommt 
+                //oder die maximale Satzanzahl erreicht ist, wird geprüft,
+                //ob es sich um ein Initialwert handelt.
+                if ($tmp != $item[0] || ($data_count + 1) == $data_count_max) {
+                    //Ist es kein Initalwert wird das Array in das Ausgabearray gespeichert                    
                     if (count($arr_tmp) > 0) {
+                        if(($data_count + 1) == $data_count_max){  
+                            $arr_tmp[$i++] = $item[2];
+                            $arr_tmp[$i++] = $item[3];
+                            $arr_tmp[$i++] = $item[6];
+                            $arr_tmp[$i++] = $item[7];
+                        }
                         array_push($arr, $arr_tmp);
                         $arr_tmp = array();
                         $i = 0;
@@ -54,7 +66,9 @@ include 'includes/navbar.php';
                 $arr_tmp[$i++] = $item[3];
                 $arr_tmp[$i++] = $item[6];
                 $arr_tmp[$i++] = $item[7];
+                
                 $data_count++;
+                //Bestimmt den Maximalen Satz
                 $max_sets = ($max_sets < $item[4]) ? $item[4] : $max_sets;
             }
 
@@ -69,16 +83,26 @@ include 'includes/navbar.php';
             }
 
             foreach ($arr as $item) {
+                //Legt für jede Reihe die Einträge an
                 for ($i = 0; $i < $max_sets; $i++) {
                     if ($i == 0) {
+                        $c = 1;
                         echo '<tr>';
                         echo '<td>' . $item[0] . '</td>';
                     }
-                    echo '
-                        <td>' . $item[1] . '</td>
-                        <td>' . $item[2] . '</td>
-                        <td>' . $item[3] . '</td>
-                        <td>' . $item[4] . '</td>';
+                    if (isset($item[$c])){
+                        echo '
+                            <td>' . $item[$c++] . '</td>
+                            <td>' . $item[$c++] . '</td>
+                            <td>' . $item[$c++] . '</td>
+                            <td>' . $item[$c++] . '</td>';
+                    } else {
+                        echo '
+                        <td> 0 </td>
+                        <td> 0 </td>
+                        <td> - </td>
+                        <td> </td>';
+                    }
                     if ($i == $max_sets) {
                         echo '</tr>';
                     }
