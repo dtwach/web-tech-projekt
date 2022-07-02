@@ -12,9 +12,9 @@ include 'includes/navbar.php';
 </head>
 
 <body>
-    <h2>Alle Trainings</h2>
+    <h2>Aktiviertes Training</h2>
     <?php
-    $tid = isset($_GET['training'])? $_GET['training'] : NULL;
+    $tid = isset($_GET['training']) ? $_GET['training'] : NULL;
     if (isset($_SESSION['tid']) || isset($tid)) {
         include 'includes/functions.php';
         $result = isset($tid) ? get_single_training_active($tid) : get_single_training_active($_SESSION['tid']);
