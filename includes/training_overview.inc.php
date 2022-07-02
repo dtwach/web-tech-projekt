@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['training_overview_submit'])) {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     session_start();
     $id_training = intval($_POST['training_id']);
     $id_user = $_SESSION['id'];

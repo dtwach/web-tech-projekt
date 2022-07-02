@@ -1,6 +1,6 @@
 Fitness-Tracker! von Kai und Dennis!!
 
-für die Benutzung unter einer NICHT XAMPP Umgebung muss man includes/dbcon_f.php mit passenden Daten füllen:
+für die Benutzung unter einer NICHT XAMPP Umgebung muss man includes/dbcon.inc.php mit passenden Daten füllen:
 
 ```
 <?php

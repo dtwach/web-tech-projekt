@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['train_submit'])) {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $count = 0;
     $id = $_POST['a_id_a'];
     $tid = $_POST['a_tid_a'];

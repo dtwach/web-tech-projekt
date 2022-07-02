@@ -1,7 +1,7 @@
 <?php
 //Dient als Validierung des Files. Prüft ob der Upload erfolgreich war,
 //die Größe passt, das Format stimmt
-function check_file($file)
+function check.incile($file)
 {
     $filter_arr = array('png', 'jpg', 'jpeg');
     $strip = explode('.', $file['name']);
@@ -25,7 +25,7 @@ function check_file($file)
 //Kommt diser schon vor, wird eine Meldung für den Benutzer generiert 
 function compare_ex_name($name_ex)
 {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT * FROM exercise WHERE name=?;");
     if (!$stmt) {
         header('Location: ../exercise_create.php?ms=db');
@@ -47,14 +47,14 @@ function compare_ex_name($name_ex)
 }
 
 if (isset($_POST['exercise_submit'])) {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     session_start();
     $name = $_SESSION['user'];
     $id = $_SESSION['id'];
     $name_ex = htmlspecialchars($_POST['name_ex']);
     $description = htmlspecialchars($_POST['description']);
-    if (!empty($_FILES['file'])) {
-        $file = $_FILES['file'];
+    if (!empty($.incILES['file'])) {
+        $file = $.incILES['file'];
     }
 
     if (empty($name_ex) || empty($description)) {
@@ -65,7 +65,7 @@ if (isset($_POST['exercise_submit'])) {
     compare_ex_name($name_ex);
 
     if (!empty($file['name'])) {
-        $blob = check_file($file);
+        $blob = check.incile($file);
     } else {
         $blob = file_get_contents('tmp/pic.png');
     }

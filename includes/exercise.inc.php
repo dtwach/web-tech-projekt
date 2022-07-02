@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['id_training']) && isset($_POST['id_exercise'])) {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $id_training = $_POST['id_training'];
     $id_exercise = $_POST['id_exercise'];
 

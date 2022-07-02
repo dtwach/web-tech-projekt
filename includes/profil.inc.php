@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['change_pwd_submit'])) {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     session_start();
     $name = $_SESSION['user'];
     $password_current = htmlspecialchars($_POST['password_current']);
@@ -46,7 +46,7 @@ if (isset($_POST['change_pwd_submit'])) {
 }
 
 if (isset($_POST['change_user_submit'])) {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     session_start();
     $name = $_SESSION['user'];
     $name_new = htmlspecialchars($_POST['name']);

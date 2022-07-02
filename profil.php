@@ -9,13 +9,13 @@ include 'includes/navbar.php';
 </head>
 
 <body>
-    <form action="includes/profil_f.php" method="post">
+    <form action="includes/profil.inc.php" method="post">
         <button type="submit" name="change_pwd_submit">Passwort &aumlndern</button>
         <input type="text" name="password_current" placeholder="Aktuelles Passwort" value="">
         <input type="text" name="password" placeholder="Neues Passwort" value="">
         <input type="text" name="password_again" placeholder="Passwort wdh." value=""> <br>
     </form>
-    <form action="includes/profil_f.php" method="post">
+    <form action="includes/profil.inc.php" method="post">
         <button type="submit" name="change_user_submit">Namen &aumlndern</button>
         <input type="text" name="name" placeholder="Wunschname" value="">
     </form>

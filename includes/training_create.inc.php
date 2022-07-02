@@ -1,6 +1,6 @@
 <?php
 
-function check_file($file)
+function check.incile($file)
 {
     $filter_arr = array('png', 'jpg', 'jpeg');
     $strip = explode('.', $file['name']);
@@ -22,7 +22,7 @@ function check_file($file)
 
 function compare_ex_name($name_ex, $id)
 {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT DISTINCT(user_training.fk_training), training.id, training.name
     FROM user_training
     JOIN training ON training.id = user_training.fk_training
@@ -47,15 +47,15 @@ function compare_ex_name($name_ex, $id)
 }
 
 if (isset($_POST['training_submit'])) {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     require 'functions.php';
     session_start();
     $name = $_SESSION['user'];
     $id = $_SESSION['id'];
     $name_ex = htmlspecialchars($_POST['name_ex']);
     $description = htmlspecialchars($_POST['description']);
-    if (!empty($_FILES['file'])) {
-        $file = $_FILES['file'];
+    if (!empty($.incILES['file'])) {
+        $file = $.incILES['file'];
     }
 
     if (empty($name_ex) || empty($description)) {
@@ -66,7 +66,7 @@ if (isset($_POST['training_submit'])) {
     compare_ex_name($name_ex, $id);
 
     if (!empty($file['name'])) {
-        $blob = check_file($file);
+        $blob = check.incile($file);
     } else {
         $blob = file_get_contents('tmp/pic.png');
     }

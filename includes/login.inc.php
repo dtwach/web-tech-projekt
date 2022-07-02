@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['login_submit'])) {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     $name = $_POST['name'];
     $password = $_POST['password'];
     if (empty($name) || empty($password)) {

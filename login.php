@@ -10,7 +10,7 @@
 <body>
     <div class="center borderpadding">
         <h2>Anmeldung</h2>
-        <form action="includes/login_f.php" method="post">
+        <form action="includes/login.inc.php" method="post">
             <input type="text" name="name" placeholder="Benutzername"><br>
             <input type="password" name="password" placeholder="Passwort"> <br>
             <button type="submit" name="login_submit">Best&aumltigen</button> <br>

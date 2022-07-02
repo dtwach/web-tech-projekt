@@ -11,7 +11,7 @@
     <div class="center borderpadding">
         <h2>Registrierung</h2>
 
-        <form action="includes/register_f.php" method="post">
+        <form action="includes/register.inc.php" method="post">
             <?php
             if (!isset($_GET['name'])) {
                 echo '<input type="text" name="name" placeholder="Benutzername" value=""><br>';

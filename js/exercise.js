@@ -5,7 +5,7 @@ function training_add_submit(id_exercise) {
     var id_training = temp.options[temp.selectedIndex].value;
     $.ajax({
       type: "POST",
-      url: "includes/exercise_f.php",
+      url: "includes/exercise.inc.php",
       data: {
         id_exercise: id_exercise,
         id_training: id_training,

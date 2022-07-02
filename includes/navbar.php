@@ -29,7 +29,7 @@ include 'logo.php';
         </div>
         <?php echo '<a class="nav_item" style="width:400px"> Logged in as: ' . $_SESSION['user'] . '</a>'; ?>
         <a class="nav_item right" href="profil.php">Profil</a>
-        <a class="nav_item last_item" href="includes/logout_f.php">Logout</a>
+        <a class="nav_item last_item" href="includes/logout.inc.php">Logout</a>
     </div>
 </body>
 

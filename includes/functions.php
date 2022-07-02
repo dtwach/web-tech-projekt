@@ -2,7 +2,7 @@
 
 function get_exercises()
 {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     if (isset($_GET['name'])) {
         $stmt = $con->prepare("SELECT * FROM exercise WHERE name=?;");
         $stmt->bind_param('s', $_GET['name']);
@@ -17,7 +17,7 @@ function get_exercises()
 
 function get_all_training_id_name()
 {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT DISTINCT(user_training.fk_training), training.id, training.name
     FROM user_training
     JOIN training ON training.id = user_training.fk_training
@@ -31,7 +31,7 @@ function get_all_training_id_name()
 
 function get_all_training()
 {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT DISTINCT(user_training.fk_training), training.id, training.name,
     training.description, training.picture
     FROM user_training
@@ -46,7 +46,7 @@ function get_all_training()
 
 function get_single_training_active($tid)
 {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT DISTINCT(user_training.fk_training), training.id, training.name,
     training.description, training.picture
     FROM user_training
@@ -61,7 +61,7 @@ function get_single_training_active($tid)
 
 function get_active_exercises()
 {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT exercise.name, exercise.id FROM exercise 
                         JOIN training_exercise on exercise.id = training_exercise.fk_exercise 
                         WHERE training_exercise.fk_training=?
@@ -75,7 +75,7 @@ function get_active_exercises()
 
 function get_training_all_sets($tid)
 {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number, user_training.time, eset.type, eset.comment
     FROM training    
     JOIN user_training on user_training.fk_training = training.id
@@ -93,7 +93,7 @@ function get_training_all_sets($tid)
 
 function get_single_training_id($name)
 {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT training.id FROM training where name=?;");
     $stmt->bind_param('s', $name);
     $stmt->execute();
@@ -104,7 +104,7 @@ function get_single_training_id($name)
 
 function add_user_training($id, $tid)
 {
-    include 'dbcon_f.php';
+    include 'dbcon.inc.php';
     $stmt = $con->prepare("INSERT INTO user_training (fk_user, fk_training) VALUES (?, ?);");
     $stmt->bind_param('ii', $id, $tid);
     $stmt->execute();

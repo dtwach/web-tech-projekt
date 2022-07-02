@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "start_f.php",
+      url: "start.inc.php",
       success: function (data) {
         alert(data);
         $("p").text(data);

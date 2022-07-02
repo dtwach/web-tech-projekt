@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['register_submit'])) {
-    require 'dbcon_f.php';
+    require 'dbcon.inc.php';
     $name = htmlspecialchars($_POST['name']);
     $password = htmlspecialchars($_POST['password']);
     $password_again = htmlspecialchars($_POST['password_again']);
