@@ -1,7 +1,7 @@
 <?php
 //Dient als Validierung des Files. Prüft ob der Upload erfolgreich war,
 //die Größe passt, das Format stimmt
-function check.incile($file)
+function check_file($file)
 {
     $filter_arr = array('png', 'jpg', 'jpeg');
     $strip = explode('.', $file['name']);
@@ -53,8 +53,8 @@ if (isset($_POST['exercise_submit'])) {
     $id = $_SESSION['id'];
     $name_ex = htmlspecialchars($_POST['name_ex']);
     $description = htmlspecialchars($_POST['description']);
-    if (!empty($.incILES['file'])) {
-        $file = $.incILES['file'];
+    if (!empty($_FILES['file'])) {
+        $file = $_FILES['file'];
     }
 
     if (empty($name_ex) || empty($description)) {
@@ -65,7 +65,7 @@ if (isset($_POST['exercise_submit'])) {
     compare_ex_name($name_ex);
 
     if (!empty($file['name'])) {
-        $blob = check.incile($file);
+        $blob = check_file($file);
     } else {
         $blob = file_get_contents('tmp/pic.png');
     }
