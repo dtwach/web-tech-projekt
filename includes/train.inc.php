@@ -8,7 +8,6 @@ if (isset($_POST['train_submit'])) {
 
 
     foreach ($_POST as $key => $value) {
-        var_dump($key);
         $expl = explode('_', $key);
         switch ($expl[1]) {
             case 'fkex':

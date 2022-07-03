@@ -33,7 +33,7 @@ include 'includes/navbar.php';
         $count = 0;
         for ($i = 1; $i <= 3; $i++) {
             echo '
-                    <input type="hidden" name="' . $row_ex["id"] . '.inckex_' . $i . '"/input>
+                    <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $i . '"/input>
                     <tr>
                     <td>Satz ' . $i . '</td>
                     <td><input type="number" name="'.$row_ex["name"].'_rep_'.$i.'" /input></td>

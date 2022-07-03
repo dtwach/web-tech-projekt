@@ -6,7 +6,7 @@ function set_add(id, name) {
       var prev_row = table.rows[table.rows.length-1];
 
   
-      row.innerHTML = '<input type="hidden" name="'+ id + '.inckex_' + (table.rows.length - 1)+'"/input>';
+      row.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
 
       var cell = row.insertCell(0);
       cell.innerHTML = 'Satz ' + (table.rows.length - 1);
