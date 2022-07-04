@@ -139,7 +139,7 @@ include 'includes/navbar.php';
         }
     } else {
         echo '<p>Bitte setzten Sie zunächst Ihr aktives Training fest.
-         Diese finden Sie unter Training => Alle Trainings.</p>';
+         Diese finden Sie unter Training => Alle <a href="training_overview.php">Trainings</a>.</p>';
     }
     ?>
 </body>

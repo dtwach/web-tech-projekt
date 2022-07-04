@@ -37,7 +37,7 @@ include 'includes/navbar.php';
             }
         } else {
             echo '<p>Bitte legen Sie zunächst ein Training an.
-        Dies finden Sie unter Training => Training erstellen.</p>';
+        Dies finden Sie unter Training => <a href="training_create.php">Training</a> erstellen.</p>';
         }
         ?>
     </div>

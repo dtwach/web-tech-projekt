@@ -88,6 +88,6 @@ if (isset($_POST['training_submit'])) {
     var_dump($_SESSION['id']);
     add_user_training($_SESSION['id'], $tid);
 
-    header('Location: ../training_create.php?ms=success');
+    header('Location: ../training_create.php?ms=success&train_id='.$tid);
     $con->close();
 }
