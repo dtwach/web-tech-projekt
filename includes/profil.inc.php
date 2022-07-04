@@ -69,7 +69,7 @@ if (isset($_POST['change_user_submit'])) {
     $stmt->store_result();
     $result = $stmt->num_rows();
     if ($result > 0) {
-        header('Location: ../profil.php?ms=taken&name=' . $name);
+        header('Location: ../profil.php?ms=taken&name=' . $name_new);
         exit();
     } else {
         $stmt->close();
@@ -77,7 +77,7 @@ if (isset($_POST['change_user_submit'])) {
         $stmt->bind_param('ss', $name_new, $name);
         $stmt->execute();
         if ($stmt) {
-            header('Location: ../success.php');
+            header('Location: ../profil.php?ms=success');
         }
         $stmt->close();
         $con->close();

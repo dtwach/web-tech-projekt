@@ -22,7 +22,7 @@ include 'includes/navbar.php';
         <button type="submit" name="change_user_submit">Namen &aumlndern</button>
         <input type="text" name="name" placeholder="Wunschname" value="">
     </form>
-</div>
+
     <?php
     isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
     if ($message !== '') {
@@ -48,6 +48,7 @@ include 'includes/navbar.php';
         }
     }
     ?>
+    </div>
 </body>
 
 </html>
