@@ -11,3 +11,7 @@
   padding: 4px;
   border-radius: 4pt;
 }
+select,
+button{
+  margin-bottom: 8px;
+}
