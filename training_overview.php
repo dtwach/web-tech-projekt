@@ -21,7 +21,7 @@ include 'includes/navbar_search.php';
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="alt">
                 <div class="searchable"><h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
-                <p style="width:30%;">' . $row['description'] . '</p> </div>
+                <p>' . $row['description'] . '</p> </div>
                 <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
                 <br>';
                 if ($_SESSION['tid'] != $row['id']) {
