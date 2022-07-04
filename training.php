@@ -19,6 +19,7 @@ include 'includes/navbar.php';
         include 'includes/functions.php';
         $result = isset($tid) ? get_single_training_active($tid) : get_single_training_active($_SESSION['tid']);
         $row = $result->fetch_assoc();
+        $tid = $row['fk_training'];
         echo '
                 <a href="training.php?training=' . $row['id'] . '"<h3>' . $row['name'] . '</h3></a>
                 <p style="width:30%;">' . $row['description'] . '</p> 
@@ -32,7 +33,6 @@ include 'includes/navbar.php';
         //Hier werden die Spalten in Zeilen Transformiert
         //Alle Sätze werden in die einzelnen Traingingseinheiten aufgeteilt
         //Dann werden die einzelnen Trainingseinheiten arr_big zugeweiesen. Dieses Stellt immer eine Tabelle dar.
-        $res = get_training_count_names($row['id']); // Gibt Anzahl er Übungen pro Training zurück
         $result = get_training_all_all_sets($row['id']); //Alle Sets für ein Training
         if ($result->num_rows > 0) {
             $data = $result->fetch_all();
@@ -44,8 +44,12 @@ include 'includes/navbar.php';
             $ctn = 0; //Counter für Anzahl der Übungen pro Training
             $max_sets = 0; //Bestimmt die Maximalen Sets             
             $data_count_max = count($data); //Maximale länge des Arrays
-            $data_count = 0; //Für die Bestimmung, dann die Maximale Array länge gefunden ist
+            $data_count = 0; //Für die Bestimmung, dann die Maximale Array länge gefunden ist            
+            $count_row = 0; //Für die Anzahlder Reihen
             foreach ($data as $item) {
+                if ($count_row == 0){
+                    $count_row = get_training_single_count_names($tid, $item[8]);
+                }
                 //Sobald eine tmp einen anderen Namen bekommt 
                 //oder die maximale Satzanzahl erreicht ist, wird geprüft,
                 //ob es sich um ein Initialwert handelt.
@@ -66,13 +70,14 @@ include 'includes/navbar.php';
                         //Wenn die Satzanzahl erreicht ist, wird der maximale Satz für die jeweilige Tabelle bestimmt.
                         //Dies wird für die Ausgabe benötigt. Danach wird eine Trainingseinheit das arr_big gepusht. 
                         $ctn++;
-                        if($ctn == $res){
+                        if($ctn == $count_row){
                             $arr_max_sets = array($max_sets);
                             array_unshift($arr, $max_sets);
                             array_push($arr_big, $arr);
                             $max_set = 0;
                             $ctn = 0;
                             $arr = array();
+                            $count_row = 0;
                         }
                     }
                     $arr_tmp[$i++] = $item[0];

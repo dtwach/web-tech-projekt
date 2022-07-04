@@ -110,7 +110,8 @@ function get_training_all_all_sets($tid)
 function get_training_count_names($tid)
 {
     include 'dbcon.inc.php';
-    $stmt = $con->prepare("SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number, user_training.time, eset.type, eset.comment, eset.time
+    $stmt = $con->prepare("SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number,
+    user_training.time, eset.type, eset.comment, eset.time, eset.time
     FROM training    
     JOIN user_training on user_training.fk_training = training.id
     JOIN eset on eset.time = user_training.time
@@ -119,6 +120,24 @@ function get_training_count_names($tid)
     GROUP BY exercise.name
     ORDER BY eset.id;");
     $stmt->bind_param('i', $tid);
+    $stmt->execute();
+    $result = $stmt->get_result()->num_rows;
+    $stmt->close();
+    return $result;
+}
+
+function get_training_single_count_names($tid, $date)
+{
+    include 'dbcon.inc.php';
+    $stmt = $con->prepare("SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number, user_training.time, eset.type, eset.comment, eset.time
+    FROM training    
+    JOIN user_training on user_training.fk_training = training.id
+    JOIN eset on eset.time = user_training.time
+    JOIN exercise on eset.fk_exercise = exercise.id
+	WHERE user_training.fk_training =? AND eset.time =?
+    GROUP BY exercise.name
+    ORDER BY eset.id;");
+    $stmt->bind_param('is', $tid, $date);
     $stmt->execute();
     $result = $stmt->get_result()->num_rows;
     $stmt->close();
