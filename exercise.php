@@ -47,7 +47,7 @@ include 'includes/navbar.php';
             }
         } else {
             echo '<p>Bitte legen Sie zunächst eine Übung an.
-        Diese finden Sie unter Übungen => Übung erstellen.</p>';
+        Diese finden Sie unter Übungen => <a href="exercise_create.php">Übung</a> erstellen.</p>';
         }
         ?>
     </div>
