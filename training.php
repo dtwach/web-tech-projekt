@@ -73,8 +73,8 @@ include 'includes/navbar.php';
                         if ($ctn == $count_row) {
                             $arr_max_sets = array($max_sets);
                             array_unshift($arr, $max_sets);
-                            array_push($arr_big, $arr);
-                            $max_set = 0;
+                            array_unshift($arr_big, $arr);
+                            $max_sets = 0;
                             $ctn = 0;
                             $arr = array();
                             $count_row = 0;
