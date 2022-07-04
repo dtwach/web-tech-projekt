@@ -17,7 +17,8 @@ include 'includes/navbar.php';
     <form enctype="multipart/form-data" action="includes/training_create.inc.php" method="post">
         <input type="text" name="name_ex" placeholder="Name"><br>
         <input type="text" name="description" placeholder="Beschreibung"> <br>
-        <input name="file" type="file" accept=".jpg, .jpeg, .png" style="border:none;"/> <br>
+        <label for="file">Wählen Sie ein Bild aus:</label><br>
+        <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;"/> <br>
         <button type="submit" name="training_submit">Erstellen</button> <br>
     </form>
     <?php
