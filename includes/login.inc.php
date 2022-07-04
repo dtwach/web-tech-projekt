@@ -7,7 +7,7 @@ if (isset($_POST['login_submit'])) {
         header('Location: ../login.php?ms=empty&name=' . $name);
         exit();
     } else {
-        $con = mysqli_connect('localhost', 'root', '', 'fitnesstracker');
+        include 'dbcon.inc.php';
         $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
         if (!$stmt) {
             header('Location: ../login.php?ms=db&name=' . $name);

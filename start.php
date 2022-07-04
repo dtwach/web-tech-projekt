@@ -26,7 +26,7 @@ include 'includes/navbar.php';
 </html>
 
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'fitnesstracker');
+include 'includes/dbcon.inc.php';
 $stmt = $con->prepare("SELECT * FROM training_exercise WHERE fk_training=? AND fk_exercise=?;");
 $id_training = 3;
 $id_exercise = 16;
