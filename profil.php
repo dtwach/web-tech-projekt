@@ -6,9 +6,12 @@ include 'includes/navbar.php';
 
 <head>
     <title>Profil</title>
+    <link rel="stylesheet" href="css/logregdivs.css">
 </head>
 
 <body>
+    <div class="center borderpadding" style="top: 40%;">
+        <h2>Profil ändern</h2>
     <form action="includes/profil.inc.php" method="post">
         <button type="submit" name="change_pwd_submit">Passwort &aumlndern</button>
         <input type="text" name="password_current" placeholder="Aktuelles Passwort" value="">
@@ -19,6 +22,7 @@ include 'includes/navbar.php';
         <button type="submit" name="change_user_submit">Namen &aumlndern</button>
         <input type="text" name="name" placeholder="Wunschname" value="">
     </form>
+</div>
     <?php
     isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
     if ($message !== '') {
