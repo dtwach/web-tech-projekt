@@ -8,7 +8,6 @@ include 'includes/navbar.php';
 <head>
     <title>Alle Trainings</title>
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
 </head>
 
