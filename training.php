@@ -21,7 +21,7 @@ include 'includes/navbar.php';
         $row = $result->fetch_assoc();
         $tid = $row['fk_training'];
         echo '
-                <a href="training.php?training=' . $row['id'] . '"<h3>' . $row['name'] . '</h3></a>
+                <h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
                 <p style="width:30%;">' . $row['description'] . '</p> 
                 <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
                 <br>
@@ -47,7 +47,7 @@ include 'includes/navbar.php';
             $data_count = 0; //Für die Bestimmung, dann die Maximale Array länge gefunden ist            
             $count_row = 0; //Für die Anzahlder Reihen
             foreach ($data as $item) {
-                if ($count_row == 0){
+                if ($count_row == 0) {
                     $count_row = get_training_single_count_names($tid, $item[8]);
                 }
                 //Sobald eine tmp einen anderen Namen bekommt 
@@ -57,7 +57,7 @@ include 'includes/navbar.php';
                     //Ist es kein Initalwert wird das Array in das Ausgabearray gespeichert                    
                     if (count($arr_tmp) > 0) {
                         //Für den letzen Satz pro Training
-                        if(($data_count + 1) == $data_count_max){  
+                        if (($data_count + 1) == $data_count_max) {
                             $arr_tmp[$i++] = $item[2];
                             $arr_tmp[$i++] = $item[3];
                             $arr_tmp[$i++] = $item[6];
@@ -70,7 +70,7 @@ include 'includes/navbar.php';
                         //Wenn die Satzanzahl erreicht ist, wird der maximale Satz für die jeweilige Tabelle bestimmt.
                         //Dies wird für die Ausgabe benötigt. Danach wird eine Trainingseinheit das arr_big gepusht. 
                         $ctn++;
-                        if($ctn == $count_row){
+                        if ($ctn == $count_row) {
                             $arr_max_sets = array($max_sets);
                             array_unshift($arr, $max_sets);
                             array_push($arr_big, $arr);
@@ -88,14 +88,14 @@ include 'includes/navbar.php';
                 $arr_tmp[$i++] = $item[3];
                 $arr_tmp[$i++] = $item[6];
                 $arr_tmp[$i++] = $item[7];
-                
+
                 $data_count++;
                 //Bestimmt den Maximalen Satz
                 $max_sets = ($max_sets < $item[4]) ? $item[4] : $max_sets;
             }
             $ctn = 0;
             //Ausgabe
-            foreach($arr_big as $ar){
+            foreach ($arr_big as $ar) {
                 $max_sets = $ar[0];
                 //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                 echo '<table>          
@@ -110,7 +110,7 @@ include 'includes/navbar.php';
                 //Tabellenreihen
                 foreach ($ar as $item) {
                     //max_sets ist kein Array. Deswegen wird es übersprungen.
-                    if(is_array($item)){
+                    if (is_array($item)) {
                         //Legt für jede Reihe die Einträge an
                         for ($i = 0; $i < $max_sets; $i++) {
                             if ($i == 0) {
@@ -118,7 +118,7 @@ include 'includes/navbar.php';
                                 echo '<tr>';
                                 echo '<td>' . $item[0] . '</td>';
                             }
-                            if (isset($item[$c])){
+                            if (isset($item[$c])) {
                                 echo '
                                     <td>' . $item[$c++] . '</td>
                                     <td>' . $item[$c++] . '</td>
