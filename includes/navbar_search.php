@@ -8,6 +8,7 @@ include 'logo.php';
 
 <head>
     <link rel="stylesheet" href="css/navbar.css">
+    <script src="js/search.js"></script>
 </head>
 
 <body>
@@ -28,7 +29,9 @@ include 'logo.php';
             </div>
         </div>
         <?php echo '<a class="nav_item" style="width:30%;text-align:start;"> Eingeloggt als: ' . $_SESSION['user'] . '</a>'; ?>
-        <a class="nav_item right" href="profil.php">Profil</a>
+        <input id="search" size="9" onkeyup="search()" type="text" name="search" style="border:1px;border-radius:5px;margin-left:auto;
+        margin-top:5px;margin-bottom:5px;text-align: center;" placeholder="Suche">
+        <a class="nav_item" href="profil.php">Profil</a>
         <a class="nav_item last_item" href="includes/logout.inc.php">Ausloggen</a>
     </div>
 </body>

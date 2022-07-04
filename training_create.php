@@ -8,14 +8,16 @@ include 'includes/navbar.php';
 <head>
     <title>Training erstellen</title>
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/logregdivs.css">
 </head>
 
 <body>
+<div class="center borderpadding">
     <h2>Training erstellen</h2>
     <form enctype="multipart/form-data" action="includes/training_create.inc.php" method="post">
         <input type="text" name="name_ex" placeholder="Name"><br>
         <input type="text" name="description" placeholder="Beschreibung"> <br>
-        <input name="file" type="file" accept=".jpg, .jpeg, .png" /> <br>
+        <input name="file" type="file" accept=".jpg, .jpeg, .png" style="border:none;"/> <br>
         <button type="submit" name="training_submit">Erstellen</button> <br>
     </form>
     <?php
@@ -49,6 +51,7 @@ include 'includes/navbar.php';
         }
     }
     ?>
+    </div>
 </body>
 
 </html>

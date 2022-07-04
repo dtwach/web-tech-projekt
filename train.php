@@ -6,15 +6,18 @@ include 'includes/navbar.php';
 <html lang="de">
 
 <head>
-    <title>PHP: Basics</title>
+    <title>Train</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/alternate.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/train.js"></script>
 </head>
 
 <body>
-    <h2>Alle Trainings</h2>
+    
+    <h2 style="text-align: center;">Alle Trainings</h2>
+    <div class="main" style="text-align: center;">
     <?php
     include 'includes/functions.php';
     $result_exercises = get_active_exercises();
@@ -58,7 +61,7 @@ include 'includes/navbar.php';
      Hinzufügen';
     }
 
-    ?>
+    ?></div>
 </body>
 
 </html>

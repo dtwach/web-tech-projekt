@@ -8,16 +8,19 @@ include 'includes/navbar.php';
 <head>
     <title>Übung erstellen</title>
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/logregdivs.css">
 </head>
 
 <body>
-    <h2>Übung</h2>
+<div class="center borderpadding">
+    <h2>Übung erstellen</h2>
     <form enctype="multipart/form-data" action="includes/exercise_create.inc.php" method="post">
         <input type="text" name="name_ex" placeholder="Name"><br>
         <input type="text" name="description" placeholder="Beschreibung"> <br>
-        <input name="file" type="file" accept=".jpg, .jpeg, .png" /> <br>
+        <input name="file" type="file" accept=".jpg, .jpeg, .png" style="border:none;"/> <br>
         <button type="submit" name="exercise_submit">Erstellen</button> <br>
     </form>
+    
     <?php
     isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
     if ($message !== '') {
@@ -49,6 +52,7 @@ include 'includes/navbar.php';
         }
     }
     ?>
+    </div>
 </body>
 
 </html>
