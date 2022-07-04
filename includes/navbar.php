@@ -27,9 +27,9 @@ include 'logo.php';
                 <a class="nav_item" href="exercise_create.php">Übung erstellen</a>
             </div>
         </div>
-        <?php echo '<a class="nav_item" style="width:400px"> Logged in as: ' . $_SESSION['user'] . '</a>'; ?>
+        <?php echo '<a class="nav_item" style="width:400px"> Eingeloggt als: ' . $_SESSION['user'] . '</a>'; ?>
         <a class="nav_item right" href="profil.php">Profil</a>
-        <a class="nav_item last_item" href="includes/logout.inc.php">Logout</a>
+        <a class="nav_item last_item" href="includes/logout.inc.php">Ausloggen</a>
     </div>
 </body>
 
