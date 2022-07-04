@@ -16,6 +16,25 @@
             <button type="submit" name="login_submit">Best&aumltigen</button> <br>
         </form>
         <a href="register.php">Registrieren</a>
+        <?php
+        isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
+        if ($message !== '') {
+            switch ($message) {
+                case 'empty':
+                    echo '<p>Eingabefelder sind unvollständig</p>';
+                    break;
+                case 'db';
+                    echo '<p>Fehler an der Datenbank. Bitte versuchen Sie es später erneut</p>';
+                    break;
+                case 'wrong';
+                    echo '<p>Falsche Anmeldedaten</p>';
+                    break;
+                case 'notfound';
+                    echo '<p>Benutzer existiert nicht</p>';
+                    break;
+            }
+        }
+        ?>
     </div>
 </body>
 
