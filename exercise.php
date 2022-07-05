@@ -23,7 +23,7 @@ include 'includes/navbar_search.php';
             $result_training = get_all_training_id_name();
 
             while ($row = $result->fetch_assoc()) {
-                echo '<div class="alt">
+                echo '<div class="element">
             <div class="searchable"><h3><a href="exercise.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>
             <p>' . $row['description'] . '</p> </div>
             <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>
