@@ -89,7 +89,7 @@ include 'includes/navbar.php';
                 echo '<p>Führen Sie zunächst Ihr Training aus.</p>';
             }
         } else {
-            echo '<p>Bitte setzten Sie zunächst Ihr aktives Training fest.
+            echo '<p style="width:300px">Bitte setzten Sie zunächst Ihr aktives Training fest.
          Diese finden Sie unter Training => Alle <a href="training_overview.php">Trainings</a>.</p>';
         }
         echo '</div>';
