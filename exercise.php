@@ -7,12 +7,9 @@ include 'includes/navbar_search.php';
 
 <head>
     <title>Übungen</title>
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/alternate.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/exercise.js"></script>
-    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
-
 </head>
 
 <body>

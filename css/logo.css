@@ -11,15 +11,6 @@
   font-weight: bold;
   font-size: medium;
 }
-.logo_item p {
-  display: inline-block;
-  line-height: normal;
-  vertical-align: middle;
-}
-.mid {
-  margin-left: auto;
-}
-
-.last_item {
-  margin-right: 0px;
+body {
+  background: #efefef;
 }

@@ -7,24 +7,22 @@ include 'includes/navbar.php';
 
 <head>
     <title>Train</title>
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/train.js"></script>
-    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 </head>
 
 <body>
-    
+
     <h2 style="text-align: center;">Alle Trainings</h2>
     <div class="main" style="text-align: center;">
-    <?php
-    include 'includes/functions.php';
-    $result_exercises = get_active_exercises();
-    if ($result_exercises->num_rows > 0) {
-        while ($row_ex = $result_exercises->fetch_assoc()) {
-            echo '
+        <?php
+        include 'includes/functions.php';
+        $result_exercises = get_active_exercises();
+        if ($result_exercises->num_rows > 0) {
+            while ($row_ex = $result_exercises->fetch_assoc()) {
+                echo '
             <form id="train_table" method="POST" action="includes/train.inc.php">
             <table id="' . $row_ex["id"] . '"> 
             <tr> 
@@ -34,9 +32,9 @@ include 'includes/navbar.php';
             <th>Art</th>
             <th>Kommentar</th>
             </tr>';
-            $count = 0;
-            for ($i = 1; $i <= 3; $i++) {
-                echo '
+                $count = 0;
+                for ($i = 1; $i <= 3; $i++) {
+                    echo '
                     <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $i . '"/input>
                     <tr>
                     <td>Satz ' . $i . '</td>
@@ -45,24 +43,24 @@ include 'includes/navbar.php';
                     <td><input type="text" name="' . $row_ex["name"] . '_type_' . $i . '" value="Standard"/input></td>
                     <td><input type="text" name="' . $row_ex["name"] . '_comment_' . $i . '"/input></td>
                     </tr>';
-            }
-            echo '</table> <br> 
+                }
+                echo '</table> <br> 
         <button type="button" id="' . $row_ex["id"] . '" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
         <button type="button" id="' . $row_ex["id"] . '" onClick="set_sub(this.id,' . $row_ex["name"] . ')" name="reduce_set">-</button>
          <br>';
-        }
-        echo '
+            }
+            echo '
             <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
             <input type="hidden" name="a_id_a" value="' . $_SESSION["id"] . '"/input>
             <button type="submit" name="train_submit">Save</button>
             </from>';
-    } else {
-        echo ' Zuerst müssen Sie ein paar 
+        } else {
+            echo ' Zuerst müssen Sie ein paar 
     <a href="exercise.php">Übungen</a>
      Hinzufügen';
-    }
+        }
 
-    ?></div>
+        ?></div>
 </body>
 
 </html>

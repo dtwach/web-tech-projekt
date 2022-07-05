@@ -7,10 +7,8 @@ include 'includes/navbar.php';
 
 <head>
     <title>Training Starten</title>
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
-    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 </head>
 
 <body>
@@ -32,12 +30,12 @@ include 'includes/navbar.php';
                     <button type="submit">Starten</button> <br>
                 </form>
                 </div>';
-                echo '<div style="margin-left:8px;margin-top:320px;">';
-                echo '<p style="margin-bottom:5px;margin-top:10px">Vorheriges Training:</p>';
-           
+            echo '<div style="margin-left:8px;margin-top:320px;">';
+            echo '<p style="margin-bottom:5px;margin-top:10px">Vorheriges Training:</p>';
+
             $arr_big = sort_training_view_array($row['id']);
             if ($result->num_rows > 0) {
-                
+
                 $ctn = 0;
                 //Ausgabe
                 foreach ($arr_big as $key => $ar) {

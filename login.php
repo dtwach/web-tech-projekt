@@ -1,11 +1,12 @@
+<?php
+include 'includes/logo.html';
+?>
 <!doctype html>
 <html lang="de">
 
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/logregdivs.css">
-    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 </head>
 
 <body>
