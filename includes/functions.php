@@ -147,7 +147,7 @@ function get_training_single_count_names($tid, $date)
 function get_single_training_id($name)
 {
     include 'dbcon.inc.php';
-    $stmt = $con->prepare("SELECT training.id FROM training where name=?;");
+    $stmt = $con->prepare("SELECT training.id FROM training where name=? ORDER BY id DESC LIMIT 1;");
     $stmt->bind_param('s', $name);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_assoc();
