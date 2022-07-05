@@ -9,6 +9,7 @@ include 'logo.php';
 <head>
     <link rel="stylesheet" href="css/navbar.css">
     <script src="js/search.js"></script>
+    <link rel="icon" type="image/x-icon" href="../svg/dumbell.svg">
 </head>
 
 <body>

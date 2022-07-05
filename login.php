@@ -5,6 +5,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/logregdivs.css">
+    <link rel="icon" type="image/x-icon" href="svg/dumbell.svg">
 </head>
 
 <body>
