@@ -13,7 +13,14 @@ include 'includes/navbar_search.php';
 </head>
 
 <body>
-    <h2 style="text-align: center;">Alle Übungen</h2>
+    <?php
+    if (isset($_GET['name'])) {
+        echo '<h2 style="text-align: center;">Übung</h2>';
+    } else {
+        echo '<h2 style="text-align: center;">Alle Übungen</h2>';
+    }
+
+    ?>
     <div class="main">
         <?php
 
