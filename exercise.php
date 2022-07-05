@@ -32,12 +32,12 @@ include 'includes/navbar_search.php';
             <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>
             <form>        
             <select id="select_' . $row['id'] . '" name="option_training">    
-            <label for="training"></label>">';
+            <label for="training"></label>';
                 foreach ($result_training as $row_training) {
                     if ($_SESSION['tid'] != $row_training['id']) {
-                        echo '<option value="' . $row_training['id'] . '">' . $row_training['name'] . ' autofocus </option>';
+                        echo '<option value="' . $row_training['id'] . '">' . $row_training['name'] . '</option>';
                     } else {
-                        echo '<option selected="selected" value="' . $row_training['id'] . '">' . $row_training['name'] . ' autofocus </option>';
+                        echo '<option selected="selected" value="' . $row_training['id'] . '">' . $row_training['name'] . '</option>';
                     }
                 }
                 echo '        
