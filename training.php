@@ -31,7 +31,7 @@ include 'includes/navbar.php';
                 </form>
                 </div>';
             echo '<div style="margin-left:8px;margin-top:320px;">';
-            echo '<p style="margin-bottom:5px;margin-top:10px">Vorheriges Training:</p>';
+            echo '<p style="margin-bottom:5px;margin-top:10px"><strong>Vorheriges Training:</strong></p>';
 
             $arr_big = sort_training_view_array($row['id']);
             if ($result->num_rows > 0) {
@@ -40,7 +40,7 @@ include 'includes/navbar.php';
                 //Ausgabe
                 foreach ($arr_big as $key => $ar) {
                     if ($key == 1) {
-                        echo '<p style="margin-bottom:5px;margin-top:2px">Alte Trainings:</p>';
+                        echo '<p style="margin-bottom:5px;margin-top:2px"><strong>Alte Trainings:</strong></p>';
                     }
                     $max_sets = $ar[0];
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
