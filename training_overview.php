@@ -9,6 +9,7 @@ include 'includes/navbar_search.php';
     <title>Alle Trainings</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/alternate.css">
+    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 </head>
 
 <body>

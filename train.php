@@ -12,6 +12,7 @@ include 'includes/navbar.php';
     <link rel="stylesheet" href="css/alternate.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/train.js"></script>
+    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 </head>
 
 <body>

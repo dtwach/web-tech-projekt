@@ -10,6 +10,7 @@ include 'includes/navbar.php';
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
+    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 </head>
 
 <body>
