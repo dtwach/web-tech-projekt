@@ -12,8 +12,8 @@ include 'includes/navbar.php';
 </head>
 
 <body>
-    <h2 style="margin-left:110px">Aktiviertes Training</h2>
-    <div class="alt" style="float:left;margin-right:100%;">
+    <h2 style="margin-left:165px">Training</h2>
+    <div class="element" style="float:left;margin-right:100%;">
         <?php
         $tid = isset($_GET['training']) ? $_GET['training'] : NULL;
         if (isset($_SESSION['tid']) || isset($tid)) {
