@@ -163,6 +163,73 @@ function add_user_training($id, $tid)
     $stmt->execute();
     $stmt->close();
 }
+
+//Hier werden die Spalten in Zeilen Transformiert
+//Alle Sätze werden in die einzelnen Traingingseinheiten aufgeteilt
+//Dann werden die einzelnen Trainingseinheiten arr_big zugeweiesen. Dieses Stellt immer eine Tabelle dar.
+//Alle Sets für ein Training
+function sort_training_view_array($training_id){
+    $result = get_training_all_all_sets($training_id);
+    $data = $result->fetch_all();
+    $arr_tmp = array(); //Kleines Array für jeden einzelnen Satz
+    $arr = array(); //arr_tmp wird in dieses Array eingesetzt, wenn voll
+    $arr_big = array(); //arr wird in dieses Array eingesetzt(dient als logische Tabelle für die Ausgabe)
+    $tmp = ''; //vergleicht ob sich trainings_id geändert hat
+    $i = 0; //Counter für 
+    $ctn = 0; //Counter für Anzahl der Übungen pro Training
+    $max_sets = 0; //Bestimmt die Maximalen Sets             
+    $data_count_max = count($data); //Maximale länge des Arrays
+    $data_count = 0; //Für die Bestimmung, dann die Maximale Array länge gefunden ist            
+    $count_row = 0; //Für die Anzahlder Reihen
+    foreach ($data as $item) {
+        if ($count_row == 0) {
+            $count_row = get_training_single_count_names($training_id, $item[8]);
+        }
+        //Sobald eine tmp einen anderen Namen bekommt 
+        //oder die maximale Satzanzahl erreicht ist, wird geprüft,
+        //ob es sich um ein Initialwert handelt.
+        if ($tmp != $item[0] || ($data_count + 1) == $data_count_max) {
+            //Ist es kein Initalwert wird das Array in das Ausgabearray gespeichert                    
+            if (count($arr_tmp) > 0) {
+                //Für den letzen Satz pro Training
+                if (($data_count + 1) == $data_count_max) {
+                    $arr_tmp[$i++] = $item[2];
+                    $arr_tmp[$i++] = $item[3];
+                    $arr_tmp[$i++] = $item[6];
+                    $arr_tmp[$i++] = $item[7];
+                }
+                //Satz 1-n wird dem Array für das einzelne Training zugewiesen
+                array_push($arr, $arr_tmp);
+                $arr_tmp = array();
+                $i = 0;
+                //Wenn die Satzanzahl erreicht ist, wird der maximale Satz für die jeweilige Tabelle bestimmt.
+                //Dies wird für die Ausgabe benötigt. Danach wird eine Trainingseinheit das arr_big gepusht. 
+                $ctn++;
+                if ($ctn == $count_row) {
+                    $arr_max_sets = array($max_sets);
+                    array_unshift($arr, $max_sets);
+                    array_unshift($arr_big, $arr);
+                    $max_sets = 0;
+                    $ctn = 0;
+                    $arr = array();
+                    $count_row = 0;
+                }
+            }
+            $arr_tmp[$i++] = $item[0];
+            $tmp = $item[0];
+        }
+        //Daten werden für die Sätze pro Übung in einem Training gesammelt und gebündelt
+        $arr_tmp[$i++] = $item[2];
+        $arr_tmp[$i++] = $item[3];
+        $arr_tmp[$i++] = $item[6];
+        $arr_tmp[$i++] = $item[7];
+
+        $data_count++;
+        //Bestimmt den Maximalen Satz
+        $max_sets = ($max_sets < $item[4]) ? $item[4] : $max_sets;
+    }
+    return $arr_big;
+}
 // SELECT exercise.id, exercise.name, eset.id, eset.rep, eset.weight, eset.type, eset.comment FROM exercise 
 // JOIN training_exercise on exercise.id = training_exercise.fk_exercise 
 // RIGHT JOIN eset on eset.fk_exercise = exercise.id
