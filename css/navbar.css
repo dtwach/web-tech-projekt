@@ -17,6 +17,17 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+.logged_in {
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  margin-right: 3px;
+  color: rgb(0, 0, 0);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  width: 30%;
+  text-align: start;
+}
 
 .nav_item:hover,
 .nav_item:active {
