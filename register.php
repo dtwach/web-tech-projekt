@@ -5,6 +5,7 @@
     <title>Registrieren</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/logregdivs.css">
+    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 </head>
 
 <body>
@@ -14,10 +15,10 @@
         <form action="includes/register.inc.php" method="post">
             <?php
             if (!isset($_GET['name'])) {
-                echo '<input type="text" name="name" placeholder="Benutzername" value=""><br>';
+                echo '<input type="text" name="name" placeholder="Benutzername" value="" autofocus><br>';
             } else {
                 $tname = $_GET['name'];
-                echo '<input type="text" name="name" value="' . $tname . '"><br>';
+                echo '<input type="text" name="name" value="' . $tname . '" autofocus><br>';
             }
             ?>
             <input type="password" name="password" placeholder="Passwort" value=""> <br>

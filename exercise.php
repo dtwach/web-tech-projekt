@@ -11,6 +11,7 @@ include 'includes/navbar_search.php';
     <link rel="stylesheet" href="css/alternate.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/exercise.js"></script>
+    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 
 </head>
 
@@ -34,9 +35,9 @@ include 'includes/navbar_search.php';
             <label for="training"></label>">';
                 foreach ($result_training as $row_training) {
                     if ($_SESSION['tid'] != $row_training['id']) {
-                        echo '<option value="' . $row_training['id'] . '">' . $row_training['name'] . '</option>';
+                        echo '<option value="' . $row_training['id'] . '">' . $row_training['name'] . ' autofocus </option>';
                     } else {
-                        echo '<option selected="selected" value="' . $row_training['id'] . '">' . $row_training['name'] . '</option>';
+                        echo '<option selected="selected" value="' . $row_training['id'] . '">' . $row_training['name'] . ' autofocus </option>';
                     }
                 }
                 echo '        

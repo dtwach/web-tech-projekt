@@ -10,6 +10,7 @@ include 'includes/navbar.php';
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
+    <link rel="icon" type="image/x-icon" href="svg/favicon.ico">
 </head>
 
 <body>
@@ -31,71 +32,12 @@ include 'includes/navbar.php';
                     <button type="submit">Starten</button> <br>
                 </form>
                 </div>';
-            echo '<div style="margin-left:8px;margin-top:320px;">';
-            //Hier werden die Spalten in Zeilen Transformiert
-            //Alle Sätze werden in die einzelnen Traingingseinheiten aufgeteilt
-            //Dann werden die einzelnen Trainingseinheiten arr_big zugeweiesen. Dieses Stellt immer eine Tabelle dar.
-            $result = get_training_all_all_sets($row['id']); //Alle Sets für ein Training
-            if ($result->num_rows > 0) {
-                $data = $result->fetch_all();
-                $arr_tmp = array(); //Kleines Array für jeden einzelnen Satz
-                $arr = array(); //arr_tmp wird in dieses Array eingesetzt, wenn voll
-                $arr_big = array(); //arr wird in dieses Array eingesetzt(dient als logische Tabelle für die Ausgabe)
-                $tmp = ''; //vergleicht ob sich trainings_id geändert hat
-                $i = 0; //Counter für 
-                $ctn = 0; //Counter für Anzahl der Übungen pro Training
-                $max_sets = 0; //Bestimmt die Maximalen Sets             
-                $data_count_max = count($data); //Maximale länge des Arrays
-                $data_count = 0; //Für die Bestimmung, dann die Maximale Array länge gefunden ist            
-                $count_row = 0; //Für die Anzahlder Reihen
+                echo '<div style="margin-left:8px;margin-top:320px;">';
                 echo '<p style="margin-bottom:5px;margin-top:10px">Vorheriges Training:</p>';
-                foreach ($data as $item) {
-                    if ($count_row == 0) {
-                        $count_row = get_training_single_count_names($tid, $item[8]);
-                    }
-                    //Sobald eine tmp einen anderen Namen bekommt 
-                    //oder die maximale Satzanzahl erreicht ist, wird geprüft,
-                    //ob es sich um ein Initialwert handelt.
-                    if ($tmp != $item[0] || ($data_count + 1) == $data_count_max) {
-                        //Ist es kein Initalwert wird das Array in das Ausgabearray gespeichert                    
-                        if (count($arr_tmp) > 0) {
-                            //Für den letzen Satz pro Training
-                            if (($data_count + 1) == $data_count_max) {
-                                $arr_tmp[$i++] = $item[2];
-                                $arr_tmp[$i++] = $item[3];
-                                $arr_tmp[$i++] = $item[6];
-                                $arr_tmp[$i++] = $item[7];
-                            }
-                            //Satz 1-n wird dem Array für das einzelne Training zugewiesen
-                            array_push($arr, $arr_tmp);
-                            $arr_tmp = array();
-                            $i = 0;
-                            //Wenn die Satzanzahl erreicht ist, wird der maximale Satz für die jeweilige Tabelle bestimmt.
-                            //Dies wird für die Ausgabe benötigt. Danach wird eine Trainingseinheit das arr_big gepusht. 
-                            $ctn++;
-                            if ($ctn == $count_row) {
-                                $arr_max_sets = array($max_sets);
-                                array_unshift($arr, $max_sets);
-                                array_unshift($arr_big, $arr);
-                                $max_sets = 0;
-                                $ctn = 0;
-                                $arr = array();
-                                $count_row = 0;
-                            }
-                        }
-                        $arr_tmp[$i++] = $item[0];
-                        $tmp = $item[0];
-                    }
-                    //Daten werden für die Sätze pro Übung in einem Training gesammelt und gebündelt
-                    $arr_tmp[$i++] = $item[2];
-                    $arr_tmp[$i++] = $item[3];
-                    $arr_tmp[$i++] = $item[6];
-                    $arr_tmp[$i++] = $item[7];
-
-                    $data_count++;
-                    //Bestimmt den Maximalen Satz
-                    $max_sets = ($max_sets < $item[4]) ? $item[4] : $max_sets;
-                }
+           
+            $arr_big = sort_training_view_array($row['id']);
+            if ($result->num_rows > 0) {
+                
                 $ctn = 0;
                 //Ausgabe
                 foreach ($arr_big as $key => $ar) {
@@ -105,8 +47,8 @@ include 'includes/navbar.php';
                     $max_sets = $ar[0];
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                     echo '<table>          
-                <tr>
-                <th>Übung</th>';
+                        <tr>
+                        <th>Übung</th>';
                     for ($i = 0; $i < $max_sets; $i++) {
                         echo '<th colspan="4">Satz ' . ($i + 1) . '</th>';
                         if ($i == $max_sets) {
