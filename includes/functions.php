@@ -197,6 +197,7 @@ function sort_training_view_array($training_id){
                     $arr_tmp[$i++] = $item[3];
                     $arr_tmp[$i++] = $item[6];
                     $arr_tmp[$i++] = $item[7];
+                    $max_sets = ($max_sets < $item[4]) ? $item[4] : $max_sets;
                 }
                 //Satz 1-n wird dem Array für das einzelne Training zugewiesen
                 array_push($arr, $arr_tmp);

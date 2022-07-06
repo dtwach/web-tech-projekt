@@ -43,7 +43,6 @@ include 'includes/navbar.php';
                         echo '<p style="margin-bottom:5px;margin-top:2px"><strong>Alte Trainings:</strong></p>';
                     }
                     $max_sets = $ar[0];
-                    var_dump($max_sets);
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                     echo '<table>          
                         <tr>
