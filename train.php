@@ -45,8 +45,8 @@ include 'includes/navbar.php';
                     </tr>';
                 }
                 echo '</table> <br> 
-        <button type="button" id="' . $row_ex["id"] . '" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
-        <button type="button" id="' . $row_ex["id"] . '" onClick="set_sub(this.id,' . $row_ex["name"] . ')" name="reduce_set">-</button>
+        <button type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
+        <button type="button" id="' . $row_ex["id"] . '_sub" onClick="set_sub(this.id)" name="reduce_set">-</button>
          <br>';
             }
             echo '

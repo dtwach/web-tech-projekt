@@ -1,7 +1,8 @@
 function set_add(id, name) {
     $(document).ready(function () {
 
-      var table = document.getElementById(id);
+      let arr = id.split("_");
+      var table = document.getElementById(arr[0]);
       var row = table.insertRow(table.rows.length);
       var prev_row = table.rows[table.rows.length-1];
 
@@ -26,3 +27,14 @@ function set_add(id, name) {
     });
   }
   
+
+  function set_sub(id) {
+    $(document).ready(function () {
+      let arr = id.split("_");
+      var table = document.getElementById(arr[0]);
+      
+      if (table.rows.length > 2){
+        table.deleteRow(table.rows.length-1);
+      }      
+    });
+  }
