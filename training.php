@@ -9,11 +9,12 @@ include 'includes/navbar.php';
     <title>Training Starten</title>
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
+    <link rel="stylesheet" href="css/training.css">
 </head>
 
 <body>
-    <h2 style="margin-left:165px">Training</h2>
-    <div class="element" style="float:left;margin-right:100%;">
+    <h2>Training</h2>
+    <div class="element left_align">
         <?php
         $tid = isset($_GET['training']) ? $_GET['training'] : NULL;
         if (isset($_SESSION['tid']) || isset($tid)) {
@@ -24,14 +25,14 @@ include 'includes/navbar.php';
             echo '
                 <h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
                 <p>' . $row['description'] . '</p> 
-                <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
+                <img class="picture" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
                 <br>
                 <form action="train.php">
                     <button type="submit">Starten</button> <br>
                 </form>
                 </div>';
-            echo '<div style="margin-left:8px;margin-top:320px;">';
-            echo '<p style="margin-bottom:5px;margin-top:10px"><strong>Vorheriges Training:</strong></p>';
+            echo '<div class="margin_left">';
+            echo '<p class="pre_training"><strong>Vorheriges Training:</strong></p>';
 
             $arr_big = sort_training_view_array($row['id']);
             if ($result->num_rows > 0) {
@@ -40,7 +41,7 @@ include 'includes/navbar.php';
                 //Ausgabe
                 foreach ($arr_big as $key => $ar) {
                     if ($key == 1) {
-                        echo '<p style="margin-bottom:5px;margin-top:2px"><strong>Alte Trainings:</strong></p>';
+                        echo '<p class="pre_training" style=""><strong>Alte Trainings:</strong></p>';
                     }
                     $max_sets = $ar[0];
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
@@ -89,7 +90,7 @@ include 'includes/navbar.php';
                 echo '<p>Führen Sie zunächst Ihr Training aus.</p>';
             }
         } else {
-            echo '<p style="width:300px">Bitte setzten Sie zunächst Ihr aktives Training fest.
+            echo '<p class="error_ms">Bitte setzten Sie zunächst Ihr aktives Training fest.
          Diese finden Sie unter Training => Alle <a href="training_overview.php">Trainings</a>.</p>';
         }
         echo '</div>';

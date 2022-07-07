@@ -1,0 +1,26 @@
+.left_align {
+    float: left;
+    margin-right: 100%;
+}
+h2 {
+    margin-left: 165px;
+}
+.picture {
+    width: 400px; 
+    height: 150px;
+}
+.margin_left {
+    margin-left: 8px;
+    margin-top: 320px;
+}
+.pre_training {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.first_training {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.error_ms {
+    width: 300px;
+}
