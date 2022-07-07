@@ -8,10 +8,11 @@ include 'includes/navbar_search.php';
 <head>
     <title>Alle Trainings</title>
     <link rel="stylesheet" href="css/alternate.css">
+    <link rel="stylesheet" href="css/training_overview.css">    
 </head>
 
 <body>
-    <h2 style="text-align: center;">Alle Trainings</h2>
+    <h2 class="header">Alle Trainings</h2>
     <div class="main">
         <?php
         include 'includes/functions.php';
@@ -21,7 +22,7 @@ include 'includes/navbar_search.php';
                 echo '<div class="element">
                 <div class="searchable"><h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
                 <p>' . $row['description'] . '</p> </div>
-                <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
+                <img class="picture" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
                 <br>';
                 if ($_SESSION['tid'] != $row['id']) {
                     echo '<form action="includes/training_overview.inc.php" method="post">
