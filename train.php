@@ -9,14 +9,15 @@ include 'includes/navbar.php';
     <title>Train</title>
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
+    <link rel="stylesheet" href="css/train.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/train.js"></script>
 </head>
 
 <body>
 
-    <h2 style="text-align: center;">Alle Trainings</h2>
-    <div class="main" style="text-align: center;">
+    <h2>Alle Trainings</h2>
+    <div class="main text_align">
         <?php
         include 'includes/functions.php';
         $result_exercises = get_active_exercises();
