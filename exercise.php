@@ -8,8 +8,10 @@ include 'includes/navbar_search.php';
 <head>
     <title>Übungen</title>
     <link rel="stylesheet" href="css/alternate.css">
+    <link rel="stylesheet" href="css/show_form.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/exercise.js"></script>
+    <script src="js/show_form.js"></script>
 </head>
 
 <body>
@@ -32,8 +34,34 @@ include 'includes/navbar_search.php';
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="element">
             <div class="searchable"><h3><a href="exercise.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>
-            <p>' . $row['description'] . '</p> </div>
-            <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>
+            <p>' . $row['description'] . '</p>';
+                if (isset($_GET['name']) and (($row['fk_user'] == $_SESSION['id']) or ($_SESSION['user'] == 'admin'))) {
+                    echo '<div class="div_left2right">
+                    <a href="javascript:show_form_desc();">Beschreibung ändern</a>
+                    <form class="form_desc"enctype="multipart/form-data" action="includes/exercise.inc.php" method="post">
+                    <input type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
+                    <input type="hidden" name="name_ex" value="' . $row['name'] . '">
+                    <input type="hidden" name="id_ex" value="' . $row['id'] . '">
+                    <button type="submit" name="update_descr">Ändern</button> <br>
+                    </form></div>
+                    ';
+                }
+                echo '
+            </div>
+            <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>';
+                if (isset($_GET['name']) and (($row['fk_user'] == $_SESSION['id']) or ($_SESSION['user'] == 'admin'))) {
+                    echo '<div class="div_left2right">
+                <a href="javascript:show_form_img();">Bild ändern</a>
+                <form class="form_img"enctype="multipart/form-data" action="includes/exercise.inc.php" method="post">
+                <label for="file">Wählen Sie ein Bild aus:</label><br>
+                <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" /> <br>
+                <input type="hidden" name="name_ex" value="' . $row['name'] . '">
+                <input type="hidden" name="id_ex" value="' . $row['id'] . '">
+                <button type="submit" name="update_img">Ändern</button> <br>
+                </form></div>
+                ';
+                }
+                echo '
             <form>        
             <select id="select_' . $row['id'] . '" name="option_training">    
             <label for="training"></label>';
@@ -48,7 +76,34 @@ include 'includes/navbar_search.php';
             </select> <br>
             <input type="hidden" name="name_ex" value="' . $row['id'] . '">
             <button  id="' . $row['id'] . '" onClick="training_add_submit(this.id)" name="training_add" type="button">Hinzufügen</button>
-            </form></div>';
+            </form>';
+                isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
+                if ($message !== '') {
+                    switch ($message) {
+                        case 'empty':
+                            echo '<p>Eingabefelder sind unvollständig</p>';
+                            break;
+                        case 'db';
+                            echo '<p>Fehler an der Datenbank. Bitte versuchen Sie es später erneut</p>';
+                            break;
+                        case 'success':
+                            echo '<p>Operation erfolgreich ausgeführt<p>';
+                            break;
+                        case 'format':
+                            echo '<p>Falsches Format<p>';
+                            break;
+                        case 'size':
+                            echo '<p>Bild zu Groß!<p>';
+                            break;
+                        case 'error':
+                            echo '<p>Fehler, Bitte ein Bild hochladen!<p>';
+                            break;
+                        case 'long':
+                            echo '<p>Eingabe zu lang!<p>';
+                            break;
+                    }
+                }
+                echo '</div>';
             }
         } else {
             echo '<p>Bitte legen Sie zunächst eine Übung an.
