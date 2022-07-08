@@ -48,7 +48,7 @@ function get_single_training_active($tid)
 {
     include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT DISTINCT(user_training.fk_training), training.id, training.name,
-    training.description, training.picture
+    training.description, training.picture,user_training.fk_user
     FROM user_training
     JOIN training ON training.id = user_training.fk_training
     WHERE user_training.fk_training=? AND user_training.fk_user=?;");
@@ -168,7 +168,8 @@ function add_user_training($id, $tid)
 //Alle Sätze werden in die einzelnen Traingingseinheiten aufgeteilt
 //Dann werden die einzelnen Trainingseinheiten arr_big zugeweiesen. Dieses Stellt immer eine Tabelle dar.
 //Alle Sets für ein Training
-function sort_training_view_array($training_id){
+function sort_training_view_array($training_id)
+{
     $result = get_training_all_all_sets($training_id);
     $data = $result->fetch_all();
     $arr_tmp = array(); //Kleines Array für jeden einzelnen Satz

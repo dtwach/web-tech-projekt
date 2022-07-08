@@ -8,7 +8,7 @@ include 'includes/navbar_search.php';
 <head>
     <title>Alle Trainings</title>
     <link rel="stylesheet" href="css/alternate.css">
-    <link rel="stylesheet" href="css/training_overview.css">    
+    <link rel="stylesheet" href="css/training_overview.css">
 </head>
 
 <body>

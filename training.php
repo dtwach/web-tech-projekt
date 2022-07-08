@@ -10,6 +10,8 @@ include 'includes/navbar.php';
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
     <link rel="stylesheet" href="css/training.css">
+    <link rel="stylesheet" href="css/show_form.css">
+    <script src="js/show_form.js"></script>
 </head>
 
 <body>
@@ -24,16 +26,72 @@ include 'includes/navbar.php';
             $tid = $row['fk_training'];
             echo '
                 <h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
-                <p>' . $row['description'] . '</p> 
-                <img class="picture" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
-                <br>
-                <form action="train.php">
+                <p>' . $row['description'] . '</p> ';
+            if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
+                echo '<div class="div_left2right">
+                    <a href="javascript:show_form_desc();">Beschreibung ändern</a>
+                    <form class="form_desc"enctype="multipart/form-data" action="includes/training.inc.php" method="post">
+                    <input type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
+                    <input type="hidden" name="name_tr" value="' . $row['name'] . '">
+                    <input type="hidden" name="id_tr" value="' . $row['id'] . '">
+                    <button type="submit" name="update_descr">Ändern</button> <br>
+                    </form></div>
+                    ';
+            }
+            echo '
+                <img class="picture" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/>';
+            if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
+                echo '<div class="div_left2right">
+                <a href="javascript:show_form_img();">Bild ändern</a>
+                <form class="form_img"enctype="multipart/form-data" action="includes/training.inc.php" method="post">
+                <label for="file">Wählen Sie ein Bild aus:</label><br>
+                <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" /> <br>
+                <input type="hidden" name="name_tr" value="' . $row['name'] . '">
+                <input type="hidden" name="id_tr" value="' . $row['id'] . '">
+                <button type="submit" name="update_img">Ändern</button> <br>
+                </form></div>
+                ';
+            }
+            echo '<br>';
+
+
+            if (isset($_GET['training']) == $_SESSION['tid'] or $_SESSION['tid'] == $row['id']) {
+                echo '<form action="train.php">
                     <button type="submit">Starten</button> <br>
-                </form>
-                </div>';
+                </form>';
+            }
+
+            isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
+            if ($message !== '') {
+                switch ($message) {
+                    case 'empty':
+                        echo '<p>Eingabefelder sind unvollständig</p>';
+                        break;
+                    case 'db';
+                        echo '<p>Fehler an der Datenbank. Bitte versuchen Sie es später erneut</p>';
+                        break;
+                    case 'success':
+                        echo '<p>Operation erfolgreich ausgeführt<p>';
+                        break;
+                    case 'format':
+                        echo '<p>Falsches Format<p>';
+                        break;
+                    case 'size':
+                        echo '<p>Bild zu Groß!<p>';
+                        break;
+                    case 'error':
+                        echo '<p>Fehler, Bitte ein Bild hochladen!<p>';
+                        break;
+                    case 'long':
+                        echo '<p>Eingabe zu lang!<p>';
+                        break;
+                }
+            }
+
+            echo '</div>';
             echo '<div class="margin_left">';
             $arr_big = sort_training_view_array($row['id']);
-            if (!empty($arr_big)){
+            if (!empty($arr_big)) {
                 echo '<p class="pre_training"><strong>Vorheriges Training:</strong></p>';
             }
             if ($result->num_rows > 0) {
