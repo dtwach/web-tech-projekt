@@ -32,9 +32,10 @@ include 'includes/navbar.php';
                 </form>
                 </div>';
             echo '<div class="margin_left">';
-            echo '<p class="pre_training"><strong>Vorheriges Training:</strong></p>';
-
             $arr_big = sort_training_view_array($row['id']);
+            if (!empty($arr_big)){
+                echo '<p class="pre_training"><strong>Vorheriges Training:</strong></p>';
+            }
             if ($result->num_rows > 0) {
 
                 $ctn = 0;
