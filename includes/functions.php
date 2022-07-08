@@ -231,23 +231,3 @@ function sort_training_view_array($training_id){
     }
     return $arr_big;
 }
-// SELECT exercise.id, exercise.name, eset.id, eset.rep, eset.weight, eset.type, eset.comment FROM exercise 
-// JOIN training_exercise on exercise.id = training_exercise.fk_exercise 
-// RIGHT JOIN eset on eset.fk_exercise = exercise.id
-// WHERE training_exercise.fk_training=3;
-//SELECT * FROM exercise JOIN training_exercise on exercise.id = training_exercise.fk_exercise WHERE training_exercise.fk_training=3
-
-
-
-// $stmt = $con->prepare("SELECT name FROM exercise");
-// $stmt->execute();
-// $result_exercises = $stmt->get_result();
-// $stmt->close();
-
-// SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number
-//     FROM training 
-//     JOIN eset on eset.fk_training = training.id
-//     JOIN exercise on eset.fk_exercise = exercise.id
-// 	JOIN user_training on user_training.fk_training = training.id
-// 	where user_training.time = (SELECT max(user_training.time) WHERE user_training.fk_training = training.id) 
-//     ORDER BY eset.id;
