@@ -22,3 +22,7 @@ tr:last-of-type td:first-of-type {
 tr:last-of-type td:last-of-type {
   border-bottom-right-radius: 10px;
 }
+th {
+  background-color: #80ba24;
+}
+

@@ -41,7 +41,7 @@ include 'includes/navbar.php';
                 //Ausgabe
                 foreach ($arr_big as $key => $ar) {
                     if ($key == 1) {
-                        echo '<p class="pre_training" style=""><strong>Alte Trainings:</strong></p>';
+                        echo '<p class="pre_training"><strong>Alte Trainings:</strong></p>';
                     }
                     $max_sets = $ar[0];
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
