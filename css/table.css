@@ -4,10 +4,10 @@ table{
 th,
 td {
   border: 1px solid black;
-  width: 60px;
 }
 td {
   padding:2px;  
+  min-width: 60px;
 }
 /* Für die Abgerundeten Border!*/
 th:first-of-type {

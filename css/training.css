@@ -30,3 +30,15 @@ tr:nth-child(odd){
   tr:nth-child(even){
     background-color: #80ba240a
   }
+th {
+    background-color: #80ba24;
+  }
+.table_container {
+    width: 100%;
+    overflow-x: auto;
+}
+table{
+    margin-bottom: 10px;
+  
+}
+  

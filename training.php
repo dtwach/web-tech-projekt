@@ -45,7 +45,8 @@ include 'includes/navbar.php';
                     }
                     $max_sets = $ar[0];
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
-                    echo '<table>          
+                    echo '<div class="table_container">
+                    <table>          
                         <tr>
                         <th>Übung</th>';
                     for ($i = 0; $i < $max_sets; $i++) {
@@ -84,7 +85,7 @@ include 'includes/navbar.php';
                             }
                         }
                     }
-                    echo '</table> <br>';
+                    echo '</table> </div> <br>';
                 }
             } else {
                 echo '<p>Führen Sie zunächst Ihr Training aus.</p>';
