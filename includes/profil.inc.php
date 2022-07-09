@@ -77,6 +77,7 @@ if (isset($_POST['change_user_submit'])) {
         $stmt->bind_param('ss', $name_new, $name);
         $stmt->execute();
         if ($stmt) {
+            $_SESSION['user'] = $name_new;
             header('Location: ../profil.php?ms=success');
         }
         $stmt->close();
