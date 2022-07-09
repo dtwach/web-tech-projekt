@@ -86,6 +86,7 @@ if (isset($_POST['training_submit'])) {
 
     $tid = get_single_training_id($name_ex);
     add_user_training($_SESSION['id'], $tid);
+    $_SESSION['tid'] = $tid;
 
     header('Location: ../training_create.php?ms=success&train_id=' . $tid);
     $con->close();
