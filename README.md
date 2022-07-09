@@ -38,3 +38,6 @@ Anmelde Daten des Admin Users im Export:
 Live-Demo unter : <https://hosting.iem.thm.de/user/dtwc79/wk1611/>
 
 (Die Live-Demo benutzt ein anderes Admin Passwort)
+
+Bildquelle des Defaultbildes:
+<https://unsplash.com/photos/FP7cfYPPUKM>
