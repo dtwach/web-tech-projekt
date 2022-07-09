@@ -14,9 +14,9 @@ include 'includes/navbar.php';
         <h2>Profil ändern</h2>
         <form action="includes/profil.inc.php" method="post">
             <button type="submit" name="change_pwd_submit">Passwort &aumlndern</button>
-            <input type="text" name="password_current" placeholder="Aktuelles Passwort" value="">
-            <input type="text" name="password" placeholder="Neues Passwort" value="">
-            <input type="text" name="password_again" placeholder="Passwort wdh." value=""> <br>
+            <input type="password" name="password_current" placeholder="Aktuelles Passwort" value="">
+            <input type="password" name="password" placeholder="Neues Passwort" value="">
+            <input type="password" name="password_again" placeholder="Passwort wdh." value=""> <br>
         </form>
         <form action="includes/profil.inc.php" method="post">
             <button type="submit" name="change_user_submit">Namen &aumlndern</button>
