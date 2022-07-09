@@ -73,7 +73,7 @@ function get_active_exercises()
     return $result;
 }
 
-function get_training_all_sets($tid)
+function get_training_all_sets($id, $tid, $time)
 {
     include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number, user_training.time, eset.type, eset.comment
@@ -81,9 +81,11 @@ function get_training_all_sets($tid)
     JOIN user_training on user_training.fk_training = training.id
     JOIN eset on eset.time = user_training.time
     JOIN exercise on eset.fk_exercise = exercise.id
-	where user_training.time = (SELECT max(user_training.time) FROM user_training WHERE user_training.fk_training =?)  
-    ORDER BY eset.id;");
-    $stmt->bind_param('i', $tid);
+    where user_training.fk_user =? AND user_training.time =? AND user_training.fk_training =? 
+	-- where user_training.time = (SELECT max(user_training.time) FROM user_training WHERE user_training.fk_training =?)  
+    GROUP BY eset.id
+    ORDER BY eset.time, exercise.name, eset.id;");
+    $stmt->bind_param('isi', $id, $time, $tid);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
@@ -99,7 +101,7 @@ function get_training_all_all_sets($tid)
     JOIN eset on eset.time = user_training.time
     JOIN exercise on eset.fk_exercise = exercise.id
 	WHERE user_training.fk_training =?
-    ORDER BY eset.id;");
+    ORDER BY eset.time, exercise.name, eset.id;");
     $stmt->bind_param('i', $tid);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -182,6 +184,7 @@ function sort_training_view_array($training_id)
     $data_count_max = count($data); //Maximale länge des Arrays
     $data_count = 0; //Für die Bestimmung, dann die Maximale Array länge gefunden ist            
     $count_row = 0; //Für die Anzahlder Reihen
+    $time = NULL;
     foreach ($data as $item) {
         if ($count_row == 0) {
             $count_row = get_training_single_count_names($training_id, $item[8]);
@@ -208,13 +211,16 @@ function sort_training_view_array($training_id)
                 //Dies wird für die Ausgabe benötigt. Danach wird eine Trainingseinheit das arr_big gepusht. 
                 $ctn++;
                 if ($ctn == $count_row) {
-                    $arr_max_sets = array($max_sets);
+                    $modified_time = substr_replace($time, '_', 10, 1);
+                    array_unshift($arr, $modified_time);
+                    array_unshift($arr, $training_id);
                     array_unshift($arr, $max_sets);
                     array_unshift($arr_big, $arr);
                     $max_sets = 0;
                     $ctn = 0;
                     $arr = array();
                     $count_row = 0;
+                    $time = NULL;
                 }
             }
             $arr_tmp[$i++] = $item[0];
@@ -229,6 +235,9 @@ function sort_training_view_array($training_id)
         $data_count++;
         //Bestimmt den Maximalen Satz
         $max_sets = ($max_sets < $item[4]) ? $item[4] : $max_sets;
+        if ($time == NULL)  {
+            $time = $item[8];
+        }
     }
     return $arr_big;
 }

@@ -99,6 +99,7 @@ include 'includes/navbar.php';
                 $ctn = 0;
                 //Ausgabe
                 foreach ($arr_big as $key => $ar) {
+        
                     if ($key == 1) {
                         echo '<p class="pre_training"><strong>Alte Trainings:</strong></p>';
                     }
@@ -107,7 +108,7 @@ include 'includes/navbar.php';
                     echo '<div class="table_container">
                     <table>          
                         <tr>
-                        <th>Übung</th>';
+                        <th><a href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung</a></th>';
                     for ($i = 0; $i < $max_sets; $i++) {
                         echo '<th colspan="4">Satz ' . ($i + 1) . '</th>';
                         if ($i == $max_sets) {

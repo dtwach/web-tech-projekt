@@ -4,11 +4,10 @@ function set_add(id, name) {
       let arr = id.split("_");
       var table = document.getElementById(arr[0]);
       var row = table.insertRow(table.rows.length);
-      var prev_row = table.rows[table.rows.length-1];
-
+      
+      table.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
   
-      row.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
-
+      // row.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
       var cell = row.insertCell(0);
       cell.innerHTML = 'Satz ' + (table.rows.length - 1);
 
