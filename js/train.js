@@ -5,7 +5,7 @@ function set_add(id, name) {
       var table = document.getElementById(arr[0]);
       var row = table.insertRow(table.rows.length);
       
-      table.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
+      row.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
   
       // row.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
       var cell = row.insertCell(0);

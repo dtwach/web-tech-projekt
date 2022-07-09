@@ -16,7 +16,7 @@ include 'includes/navbar.php';
 
     <body>
 
-        <h2>Alle Trainings</h2>
+        <h2>Training</h2>
         <div class="main text_align">
             <?php
             include 'includes/functions.php';
