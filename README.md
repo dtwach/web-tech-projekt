@@ -41,3 +41,6 @@ Live-Demo unter : <https://hosting.iem.thm.de/user/dtwc79/wk1611/>
 
 Bildquelle des Defaultbildes:
 <https://unsplash.com/photos/FP7cfYPPUKM>
+
+Bildquelle des Logos/Favicons:
+<https://freesvg.org/dumbbell-vector-image>
