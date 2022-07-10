@@ -3,23 +3,20 @@
     margin-right: 100%;
 }
 h2 {
-    margin-left: 165px;
+    text-align: center;
 }
 .picture {
     width: 400px; 
     height: 150px;
 }
 .margin_left {
-    margin-left: 8px;
-    margin-top: 320px;
+    margin-left: 20px;
+}
+.margin_right {
+    margin-right: 20px;
 }
 .pre_training {
-    margin-bottom: 5px;
-    margin-top: 10px;
-}
-.first_training {
-    margin-bottom: 5px;
-    margin-top: 2px;
+    text-align: center;
 }
 .error_ms {
     width: 300px;
@@ -37,8 +34,18 @@ th {
 .table_container {
     width: 100%;
     overflow-x: auto;
+    border-radius: 10px;
 }
 td:first-of-type {
     text-align: center;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+.heading_container {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
   

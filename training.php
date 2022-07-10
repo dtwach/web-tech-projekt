@@ -16,7 +16,7 @@ include 'includes/navbar.php';
 
 <body>
     <h2>Training</h2>
-    <div class="element left_align">
+    <div class="element margin_left margin_right heading_container">
         <?php
         $tid = isset($_GET['training']) ? $_GET['training'] : NULL;
         if (isset($_SESSION['tid']) || isset($tid)) {
@@ -89,7 +89,7 @@ include 'includes/navbar.php';
             }
 
             echo '</div>';
-            echo '<div class="margin_left">';
+            echo '<div class="margin_left margin_right">';
             $arr_big = sort_training_view_array($row['id']);
             if (!empty($arr_big)) {
                 echo '<p class="pre_training"><strong>Vorheriges Training:</strong></p>';
@@ -154,7 +154,7 @@ include 'includes/navbar.php';
             echo '<p class="error_ms">Bitte setzten Sie zunächst Ihr aktives Training fest.
          Diese finden Sie unter Training => Alle <a href="training_overview.php">Trainings</a>.</p>';
         }
-        echo '</div>';
+    echo '</div> </div>';
         ?>
 
 </body>
