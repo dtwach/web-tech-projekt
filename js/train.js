@@ -37,3 +37,14 @@ function set_add(id, name) {
       }      
     });
   }
+
+  function set_sub_edit(id) {
+    $(document).ready(function () {
+      let arr = id.split("_");
+      var table = document.getElementById(arr[0]);
+      
+      if ((table.rows.length - 1) > arr[2]){
+        table.deleteRow(table.rows.length-1);
+      }      
+    });
+  }
