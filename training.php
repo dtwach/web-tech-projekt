@@ -2,13 +2,13 @@
 <html lang="de">
 
 <head>
-    <?php include 'includes/navbar.php'; ?>
     <title>Training Starten</title>
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
     <link rel="stylesheet" href="css/training.css">
     <link rel="stylesheet" href="css/show_form.css">
     <script src="js/show_form.js"></script>
+    <?php include 'includes/navbar.php'; ?>
 </head>
 
 <body>
