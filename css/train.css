@@ -1,13 +1,13 @@
+/* Diese CSS-Datei ist relevant für die train.php Seite. */
 h2 {
-    text-align: center;
+  text-align: center;
 }
-
 .text_align {
-    text-align: center;
+  text-align: center;
 }
 td:first-of-type {
-    background-color: #80ba245b;
+  background-color: #80ba245b;
 }
 input {
-    background-color:  #80ba2417;
+  background-color: #80ba2417;
 }

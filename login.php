@@ -19,6 +19,7 @@ include 'includes/logo.html';
         </form>
         <a href="register.php">Registrieren</a>
         <?php
+        // Fehlermeldungen
         isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
         if ($message !== '') {
             switch ($message) {

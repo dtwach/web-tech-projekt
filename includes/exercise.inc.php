@@ -1,4 +1,5 @@
 <?php
+//"bindet" das Training und die Übung zusammen
 if (isset($_POST['id_training']) && isset($_POST['id_exercise'])) {
     include 'dbcon.inc.php';
     $id_training = $_POST['id_training'];
@@ -21,7 +22,7 @@ if (isset($_POST['id_training']) && isset($_POST['id_exercise'])) {
     $stmt->execute();
     $stmt->close();
 }
-
+// dieser Code ermöglicht es die Beschreibung zu ändern
 if (isset($_POST['update_descr'])) {
     require 'dbcon.inc.php';
     session_start();
@@ -44,7 +45,7 @@ if (isset($_POST['update_descr'])) {
     $stmt->close();
     $con->close();
 }
-
+// dieser Code ermöglicht es das Bild zu ändern
 if (isset($_POST['update_img'])) {
     require 'dbcon.inc.php';
     session_start();
@@ -61,7 +62,8 @@ if (isset($_POST['update_img'])) {
     $stmt->close();
     $con->close();
 }
-
+//Dient als Validierung des Files. Prüft ob der Upload erfolgreich war,
+//die Größe passt, das Format stimmt.
 function check_file($file)
 {
     $name_ex = htmlspecialchars($_POST['name_ex']);

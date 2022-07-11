@@ -1,4 +1,5 @@
-table{
+/* Diese CSS-Datei ist relevant für alle Seiten die eine Tabelle haben. */
+table {
   table-layout: fixed;
 }
 th,
@@ -6,7 +7,7 @@ td {
   border: 1px solid black;
 }
 td {
-  padding:2px;  
+  padding: 2px;
   min-width: 60px;
 }
 /* Für die Abgerundeten Border!*/
@@ -26,4 +27,3 @@ tr:last-of-type td:last-of-type {
 th {
   background-color: #80ba24;
 }
-

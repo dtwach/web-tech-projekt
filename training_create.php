@@ -22,6 +22,7 @@ include 'includes/navbar.php';
             <button type="submit" name="training_submit">Erstellen</button> <br>
         </form>
         <?php
+        // Fehlermeldungen
         isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
         if ($message !== '') {
             switch ($message) {

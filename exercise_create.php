@@ -23,6 +23,7 @@ include 'includes/navbar.php';
         </form>
 
         <?php
+        // Fehlermeldungen
         isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
         if ($message !== '') {
             switch ($message) {

@@ -1,6 +1,8 @@
+/* Diese CSS-Datei ist relevant für die training_overview.php Seite. */
 .header {
-    text-align: center;
+  text-align: center;
 }
 .picture {
-    width:400px; height:150px;
+  width: 400px;
+  height: 150px;
 }

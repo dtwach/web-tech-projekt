@@ -27,6 +27,7 @@ include 'includes/logo.html';
             <button type="submit" name="register_submit">Best&aumltigen</button> <br>
         </form>
         <?php
+        // Fehlermeldungen
         isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
         if ($message !== '') {
             switch ($message) {

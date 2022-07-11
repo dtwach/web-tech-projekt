@@ -1,6 +1,6 @@
 <?php
 //Dient als Validierung des Files. Prüft ob der Upload erfolgreich war,
-//die Größe passt, das Format stimmt
+//die Größe passt, das Format stimmt.
 function check_file($file)
 {
     $filter_arr = array('png', 'jpg', 'jpeg');
@@ -22,7 +22,7 @@ function check_file($file)
 }
 
 //Hier wird der Name der Übung mit den vorhandenen Übungen verglichen.
-//Kommt diser schon vor, wird eine Meldung für den Benutzer generiert 
+//Kommt diser schon vor, wird eine Meldung für den Benutzer generiert.
 function compare_ex_name($name_ex)
 {
     require 'dbcon.inc.php';
@@ -45,7 +45,7 @@ function compare_ex_name($name_ex)
         exit();
     }
 }
-
+// Hier ist der Code um eine Übung zu erstellen und diese in die Datenbank zu legen.
 if (isset($_POST['exercise_submit'])) {
     require 'dbcon.inc.php';
     session_start();

@@ -1,5 +1,6 @@
 <?php
-
+//Dient als Validierung des Files. Prüft ob der Upload erfolgreich war,
+//die Größe passt, das Format stimmt.
 function check_file($file)
 {
     $filter_arr = array('png', 'jpg', 'jpeg');
