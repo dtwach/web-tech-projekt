@@ -1,3 +1,4 @@
+// Zeigt bzw. Versteckt das Element mit der ID "Search" wenn es gesucht wird.
 function search() {
   $(document).ready(function () {
     let input = document.getElementById("search").value;
