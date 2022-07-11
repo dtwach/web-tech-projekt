@@ -24,8 +24,8 @@ include 'includes/navbar.php';
             $result = isset($tid) ? get_single_training_active($tid) : get_single_training_active($_SESSION['tid']);
             $row = $result->fetch_assoc();
             $tid = $row['fk_training'];
-            echo '
-                <h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
+                echo '
+                <h3>' . $row['name'] . '</h3>
                 <p>' . $row['description'] . '</p> ';
             if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
                 echo '<div class="div_left2right">
