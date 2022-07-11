@@ -6,6 +6,10 @@ include 'logo.html';
 <!doctype html>
 <html lang="de">
 
+<head>
+    <script src="js/search.js"></script>
+</head>
+
 <body>
     <header>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -25,8 +29,13 @@ include 'logo.html';
                     <a class="nav_item" href="exercise_create.php">Übung erstellen</a>
                 </div>
             </div>
-            <?php echo '<a class="logged_in"> Eingeloggt als: ' . $_SESSION['user'] . '</a>'; ?>
-            <a class="nav_item right" href="profil.php">Profil</a>
+            <?php echo '<a class="logged_in"> Eingeloggt als: ' . $_SESSION['user'] . '</a>';
+            if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == 'exercise.php' || basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == 'training_overview.php') {
+                echo ' <input id="search" size="9" onkeyup="search()" type="text" name="search" style="border:1px;border-radius:5px;margin-left:auto;margin-top:5px;
+        margin-bottom:5px;margin-right:5px;text-align: center;" placeholder="Suche" autofocus>';
+            }
+            ?>
+            <a class="nav_item" href="profil.php">Profil</a>
             <a class="nav_item last_item" href="includes/logout.inc.php">Ausloggen</a>
         </div>
     </header>

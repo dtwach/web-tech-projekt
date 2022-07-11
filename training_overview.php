@@ -1,5 +1,5 @@
 <?php
-include 'includes/navbar_search.php';
+include 'includes/navbar.php';
 ?>
 
 <!doctype html>
