@@ -107,8 +107,13 @@ include 'includes/navbar.php';
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                     echo '<div class="table_container">
                     <table>          
-                        <tr>
-                        <th><a href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung</a></th>';
+                        <tr>';
+                        if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
+                            echo '<th><a href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung</a></th>';
+                        } else{
+                            echo '<th>Übung</a></th>';
+                        }
+                        
                     for ($i = 0; $i < $max_sets; $i++) {
                         echo '<th colspan="4">Satz ' . ($i + 1) . '</th>';
                         if ($i == $max_sets) {
