@@ -94,7 +94,7 @@ include 'includes/navbar.php';
             if (!empty($arr_big)) {
                 echo '<p class="pre_training"><strong>Vorheriges Training:</strong></p>';
             }
-            if ($result->num_rows > 0) {
+            if (count($arr_big) > 0 ) {
 
                 $ctn = 0;
                 //Ausgabe
@@ -153,10 +153,10 @@ include 'includes/navbar.php';
                     echo '</table> </div> <br>';
                 }
             } else {
-                echo '<p>Führen Sie zunächst Ihr Training aus.</p>';
+                echo '<p class="text_center">Führen Sie zunächst Ihr Training aus.</p>';
             }
         } else {
-            echo '<p class="error_ms">Bitte setzten Sie zunächst Ihr aktives Training fest.
+            echo '<p class="error_ms text_center">Bitte setzten Sie zunächst Ihr aktives Training fest.
          Diese finden Sie unter Training => Alle <a href="training_overview.php">Trainings</a>.</p>';
         }
     echo '</div> </div>';

@@ -20,9 +20,9 @@ include 'includes/navbar.php';
         <?php
         include 'includes/functions.php';
         //Erstellt einen neuen Eintrag
-        if (!isset($_GET['tid']) && !isset($_GET['time'])) {
-            $result_exercises = get_active_exercises();
-            if ($result_exercises->num_rows > 0) {
+        $result_exercises = get_active_exercises();
+        if ($result_exercises->num_rows > 0) {
+            if (!isset($_GET['tid']) && !isset($_GET['time'])) {
                 while ($row_ex = $result_exercises->fetch_assoc()) {
                     echo '
                         <form id="train_table" method="POST" action="includes/train.inc.php">
@@ -120,8 +120,10 @@ include 'includes/navbar.php';
                     <input type="hidden" name="a_time_a" value="' . $modified_time . '"/input>
                     <button type="submit" name="train_submit">Save</button>
                     </from>';
+            }
+        } else {
+            echo '<p>Bitte fügen Sie dem Training zuerst <a href="exercise.php">Übungen</a> hinzu.</p>';
         }
-
         ?>
     </div>
 </body>

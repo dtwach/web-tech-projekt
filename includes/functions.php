@@ -63,9 +63,9 @@ function get_active_exercises()
 {
     include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT exercise.name, exercise.id FROM exercise 
-                        JOIN training_exercise on exercise.id = training_exercise.fk_exercise 
-                        WHERE training_exercise.fk_training=?
-                        GROUP BY exercise.name;");
+    JOIN training_exercise on exercise.id = training_exercise.fk_exercise 
+    WHERE training_exercise.fk_training=?
+    GROUP BY exercise.name;");
     $stmt->bind_param('i', $_SESSION['tid']);
     $stmt->execute();
     $result = $stmt->get_result();

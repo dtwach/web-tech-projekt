@@ -14,3 +14,6 @@ select,
 button {
   margin-bottom: 8px;
 }
+.text_center {
+  text-align: center;
+}
