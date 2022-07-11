@@ -56,8 +56,10 @@ if (isset($_POST['exercise_submit'])) {
     if (!empty($_FILES['file'])) {
         $file = $_FILES['file'];
     }
-
-    if (empty($name_ex) || empty($description)) {
+    if (empty($description) || strlen(trim($description)) == 0) {
+        $description = '&nbsp;';
+    }
+    if (empty($name_ex)) {
         header('Location: ../exercise_create.php?ms=empty');
         exit();
     }

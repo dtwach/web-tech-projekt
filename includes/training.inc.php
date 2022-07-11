@@ -5,9 +5,8 @@ if (isset($_POST['update_descr'])) {
     $name_ex = htmlspecialchars($_POST['name_tr']);
     $descr_new = htmlspecialchars($_POST['changed_descr']);
     $id_tr = htmlspecialchars($_POST['id_tr']);
-    if (empty($descr_new)) {
-        header('Location: ../training.php?training=' . $id_tr . '&ms=empty');
-        exit();
+    if (empty($descr_new) || strlen(trim($descr_new)) == 0) {
+        $descr_new = '&nbsp;';
     }
     if (strlen($descr_new) >= 255) {
         header('Location: ../training.php?training=' . $id_tr . '&ms=long');

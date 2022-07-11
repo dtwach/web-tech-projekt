@@ -57,8 +57,10 @@ if (isset($_POST['training_submit'])) {
     if (!empty($FILES['file'])) {
         $file = $FILES['file'];
     }
-
-    if (empty($name_ex) || empty($description)) {
+    if (empty($description) || strlen(trim($description)) == 0) {
+        $description = '&nbsp;';
+    }
+    if (empty($name_ex)) {
         header('Location: ../training_create.php?ms=empty');
         exit();
     }
