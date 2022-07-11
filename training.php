@@ -16,7 +16,7 @@ include 'includes/navbar.php';
 
 <body>
     <h2>Training</h2>
-    <div class="element left_align">
+    <div class="element margin_left margin_right heading_container">
         <?php
         $tid = isset($_GET['training']) ? $_GET['training'] : NULL;
         if (isset($_SESSION['tid']) || isset($tid)) {
@@ -24,8 +24,8 @@ include 'includes/navbar.php';
             $result = isset($tid) ? get_single_training_active($tid) : get_single_training_active($_SESSION['tid']);
             $row = $result->fetch_assoc();
             $tid = $row['fk_training'];
-            echo '
-                <h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
+                echo '
+                <h3>' . $row['name'] . '</h3>
                 <p>' . $row['description'] . '</p> ';
             if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
                 echo '<div class="div_left2right">
@@ -55,7 +55,7 @@ include 'includes/navbar.php';
             echo '<br>';
 
 
-            if (isset($_GET['training']) == $_SESSION['tid'] or $_SESSION['tid'] == $row['id']) {
+            if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
                 echo '<form action="train.php">
                     <button type="submit">Starten</button> <br>
                 </form>';
@@ -89,7 +89,7 @@ include 'includes/navbar.php';
             }
 
             echo '</div>';
-            echo '<div class="margin_left">';
+            echo '<div class="margin_left margin_right">';
             $arr_big = sort_training_view_array($row['id']);
             if (!empty($arr_big)) {
                 echo '<p class="pre_training"><strong>Vorheriges Training:</strong></p>';
@@ -107,8 +107,13 @@ include 'includes/navbar.php';
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                     echo '<div class="table_container">
                     <table>          
-                        <tr>
-                        <th><a href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung</a></th>';
+                        <tr>';
+                        if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
+                            echo '<th><a href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung</a></th>';
+                        } else{
+                            echo '<th>Übung</a></th>';
+                        }
+                        
                     for ($i = 0; $i < $max_sets; $i++) {
                         echo '<th colspan="4">Satz ' . ($i + 1) . '</th>';
                         if ($i == $max_sets) {
@@ -154,7 +159,7 @@ include 'includes/navbar.php';
             echo '<p class="error_ms">Bitte setzten Sie zunächst Ihr aktives Training fest.
          Diese finden Sie unter Training => Alle <a href="training_overview.php">Trainings</a>.</p>';
         }
-        echo '</div>';
+    echo '</div> </div>';
         ?>
 
 </body>
