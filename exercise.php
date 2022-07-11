@@ -32,7 +32,13 @@ include 'includes/navbar_search.php';
 
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="element">
-            <div class="searchable"><h3><a href="exercise.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>
+            <div class="searchable">';
+            if (isset($_GET['name'])){
+                echo '<h3>' . $row['name'] . '</h3>';
+            } else {
+                echo '<h3><a href="exercise.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>';
+            }
+           echo '
             <p>' . $row['description'] . '</p>';
                 if (isset($_GET['name']) and (($row['fk_user'] == $_SESSION['id']) or ($_SESSION['user'] == 'admin'))) {
                     echo '<div class="div_left2right">
