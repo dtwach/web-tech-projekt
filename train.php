@@ -10,7 +10,6 @@ include 'includes/navbar.php';
         <link rel="stylesheet" href="css/table.css">
         <link rel="stylesheet" href="css/alternate.css">
         <link rel="stylesheet" href="css/train.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="js/train.js"></script>
     </head>
 

@@ -9,7 +9,6 @@ include 'includes/navbar_search.php';
     <title>Übungen</title>
     <link rel="stylesheet" href="css/alternate.css">
     <link rel="stylesheet" href="css/show_form.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/exercise.js"></script>
     <script src="js/show_form.js"></script>
 </head>
