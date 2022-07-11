@@ -1,11 +1,8 @@
-<?php
-include 'includes/navbar.php';
-?>
-
 <!doctype html>
 <html lang="de">
 
 <head>
+    <?php include 'includes/navbar.php'; ?>
     <title>Übungen</title>
     <link rel="stylesheet" href="css/alternate.css">
     <link rel="stylesheet" href="css/show_form.css">

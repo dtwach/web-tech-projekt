@@ -1,10 +1,8 @@
-<?php
-include 'includes/logo.html';
-?>
 <!doctype html>
 <html lang="de">
 
 <head>
+    <?php include 'includes/navbar.php'; ?>
     <title>Login</title>
     <link rel="stylesheet" href="css/logregdivs.css">
 </head>

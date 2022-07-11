@@ -1,17 +1,14 @@
-<?php
-include 'includes/navbar.php';
-?>
-
 <!doctype html>
 <html lang="de">
 
-    <head>
-        <title>Train</title>
-        <link rel="stylesheet" href="css/table.css">
-        <link rel="stylesheet" href="css/alternate.css">
-        <link rel="stylesheet" href="css/train.css">
-        <script src="js/train.js"></script>
-    </head>
+<head>
+    <?php include 'includes/navbar.php'; ?>
+    <title>Train</title>
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/alternate.css">
+    <link rel="stylesheet" href="css/train.css">
+    <script src="js/train.js"></script>
+</head>
 
 <body>
 
@@ -65,8 +62,8 @@ include 'includes/navbar.php';
                 $tmp_int = 0;
                 $result_exercises = get_active_exercises();
                 echo '<form id="train_table" method="POST" action="includes/train.inc.php">';
-                foreach ($result as $item){    
-                    if($tmp_name == NULL) {
+                foreach ($result as $item) {
+                    if ($tmp_name == NULL) {
                         $tmp_name = $item['name'];
                         $row_ex = $result_exercises->fetch_assoc();
                         echo '
@@ -78,16 +75,16 @@ include 'includes/navbar.php';
                         <th>Art</th>
                         <th>Kommentar</th>
                         </tr>';
-                }
-                if ($tmp_name != $item['name'] | !isset($item['name'])) {
-                    echo '</tr></table> <br> 
+                    }
+                    if ($tmp_name != $item['name'] | !isset($item['name'])) {
+                        echo '</tr></table> <br> 
                         <button type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
-                        <button type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  .'" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
+                        <button type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  . '" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
                         <br>';
 
-                    $tmp_name = $item['name'];
-                    $row_ex = $result_exercises->fetch_assoc();
-                    echo '
+                        $tmp_name = $item['name'];
+                        $row_ex = $result_exercises->fetch_assoc();
+                        echo '
                         <table id="' . $row_ex["id"] . '"> 
                         <tr> 
                         <th>' . $row_ex["name"] . '</th>
@@ -96,8 +93,8 @@ include 'includes/navbar.php';
                         <th>Art</th>
                         <th>Kommentar</th>
                         </tr>';
-                }
-                echo '
+                    }
+                    echo '
                         <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $item['number'] . '"/input>
                         <tr>
                         <td>Satz ' . $item['number'] . '</td>
@@ -106,15 +103,15 @@ include 'includes/navbar.php';
                         <td><input type="text" name="' . $row_ex["name"] . '_type_' . $item['number']  . '" value="' . $item['type'] . '"/input></td>
                         <td><input type="text" name="' . $row_ex["name"] . '_comment_' . $item['number']  . '_' . $item['id'] . '" value="' . $item['comment'] . '"/input></td>
                         </tr>';
-                        $tmp_int = $item['number'];
-                    }    
-                    //Lestes Element der Foreach Schleife
-                    echo '</tr></table> <br> 
+                    $tmp_int = $item['number'];
+                }
+                //Lestes Element der Foreach Schleife
+                echo '</tr></table> <br> 
                     <button type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
-                    <button type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  .'" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
+                    <button type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  . '" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
                     <br>';
-            //Für den Submit Button
-            echo '
+                //Für den Submit Button
+                echo '
                     <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
                     <input type="hidden" name="a_id_a" value="' . $_SESSION["id"] . '"/input>
                     <input type="hidden" name="a_time_a" value="' . $modified_time . '"/input>
