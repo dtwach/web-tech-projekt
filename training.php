@@ -55,7 +55,7 @@ include 'includes/navbar.php';
             echo '<br>';
 
 
-            if (isset($_GET['training']) == $_SESSION['tid'] or $_SESSION['tid'] == $row['id']) {
+            if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
                 echo '<form action="train.php">
                     <button type="submit">Starten</button> <br>
                 </form>';
