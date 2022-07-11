@@ -13,18 +13,18 @@ include 'includes/navbar.php';
         <script src="js/train.js"></script>
     </head>
 
-    <body>
+<body>
 
-        <h2>Training</h2>
-        <div class="main text_align">
-            <?php
-            include 'includes/functions.php';
-            //Erstellt einen neuen Eintrag
-            if (!isset($_GET['tid']) && !isset($_GET['time'])){
-                $result_exercises = get_active_exercises();
-                if ($result_exercises->num_rows > 0) {
-                    while ($row_ex = $result_exercises->fetch_assoc()) {
-                        echo '
+    <h2>Training</h2>
+    <div class="main text_align">
+        <?php
+        include 'includes/functions.php';
+        //Erstellt einen neuen Eintrag
+        if (!isset($_GET['tid']) && !isset($_GET['time'])) {
+            $result_exercises = get_active_exercises();
+            if ($result_exercises->num_rows > 0) {
+                while ($row_ex = $result_exercises->fetch_assoc()) {
+                    echo '
                         <form id="train_table" method="POST" action="includes/train.inc.php">
                         <table id="' . $row_ex["id"] . '"> 
                         <tr> 
@@ -34,9 +34,9 @@ include 'includes/navbar.php';
                         <th>Art</th>
                         <th>Kommentar</th>
                         </tr>';
-                        $count = 0;
-                        for ($i = 1; $i <= 3; $i++) {
-                            echo '
+                    $count = 0;
+                    for ($i = 1; $i <= 3; $i++) {
+                        echo '
                             <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $i . '"/input>
                             <tr>
                             <td>Satz ' . $i . '</td>
@@ -45,23 +45,17 @@ include 'includes/navbar.php';
                             <td><input type="text" name="' . $row_ex["name"] . '_type_' . $i . '" value="Standard"/input></td>
                             <td><input type="text" name="' . $row_ex["name"] . '_comment_' . $i . '"/input></td>
                             </tr>';
-                        }
-                        echo '</table> <br> 
+                    }
+                    echo '</table> <br> 
                         <button type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
                         <button type="button" id="' . $row_ex["id"] . '_sub" onClick="set_sub(this.id)" name="reduce_set">-</button>
                         <br>';
-                    }
-                    echo '
+                }
+                echo '
                     <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
                     <input type="hidden" name="a_id_a" value="' . $_SESSION["id"] . '"/input>
                     <button type="submit" name="train_submit">Save</button>
                     </from>';
-                } else {
-                    echo ' Zuerst müssen Sie ein paar 
-                    <a href="exercise.php">Übungen</a>
-                    Hinzufügen';
-                }
-            //Ändert einen vorhandenen Eintrag
             } else {
                 $tid = htmlspecialchars($_GET['tid']);
                 $time = htmlspecialchars($_GET['time']);
@@ -84,17 +78,16 @@ include 'includes/navbar.php';
                         <th>Art</th>
                         <th>Kommentar</th>
                         </tr>';
-
-                    }
-                    if($tmp_name != $item['name'] | !isset($item['name'])){
-                        echo '</tr></table> <br> 
+                }
+                if ($tmp_name != $item['name'] | !isset($item['name'])) {
+                    echo '</tr></table> <br> 
                         <button type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
                         <button type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  .'" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
                         <br>';
 
-                        $tmp_name = $item['name'];
-                        $row_ex = $result_exercises->fetch_assoc();
-                        echo '
+                    $tmp_name = $item['name'];
+                    $row_ex = $result_exercises->fetch_assoc();
+                    echo '
                         <table id="' . $row_ex["id"] . '"> 
                         <tr> 
                         <th>' . $row_ex["name"] . '</th>
@@ -103,8 +96,8 @@ include 'includes/navbar.php';
                         <th>Art</th>
                         <th>Kommentar</th>
                         </tr>';
-                    }
-                    echo '
+                }
+                echo '
                         <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $item['number'] . '"/input>
                         <tr>
                         <td>Satz ' . $item['number'] . '</td>
@@ -120,17 +113,17 @@ include 'includes/navbar.php';
                     <button type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
                     <button type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  .'" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
                     <br>';
-                    //Für den Submit Button
-                    echo '
+            //Für den Submit Button
+            echo '
                     <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
                     <input type="hidden" name="a_id_a" value="' . $_SESSION["id"] . '"/input>
                     <input type="hidden" name="a_time_a" value="' . $modified_time . '"/input>
                     <button type="submit" name="train_submit">Save</button>
                     </from>';
-                }
+        }
 
-            ?>
-        </div>
-    </body>
+        ?>
+    </div>
+</body>
 
 </html>
