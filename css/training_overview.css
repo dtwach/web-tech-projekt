@@ -6,3 +6,12 @@
   width: 400px;
   height: 150px;
 }
+
+@media (max-width: 500px) {
+  .nav_item{
+    max-width: 45px !important;
+  }
+  .last_item {
+    overflow-x: auto;
+  }
+}

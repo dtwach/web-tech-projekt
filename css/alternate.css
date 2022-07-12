@@ -27,7 +27,7 @@ button {
     width: 300px;
   }
   .picture{
-    width: 200px;
+    width: 200px !important;
   }
   .logged_in{
     display: none;
