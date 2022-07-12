@@ -102,10 +102,10 @@
                     }
                     $max_sets = $ar[0];
                     //Holt das Ausführungs-Datum und transformiert dieses in dd.mm.yyyy
-                    if(!is_null($ar[2])){
+                    if (!is_null($ar[2])) {
                         $tmp_explode_1 = explode("_", $ar[2])[0];
                         $tmp_explode_2 = explode("-", $tmp_explode_1);
-                        $set_time = $tmp_explode_2[2].'.'.$tmp_explode_2[1].'.'.$tmp_explode_2[0];
+                        $set_time = $tmp_explode_2[2] . '.' . $tmp_explode_2[1] . '.' . $tmp_explode_2[0];
                     }
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                     echo '<div class="table_container">
@@ -159,7 +159,7 @@
                 echo '<p class="text_center">Führen Sie zunächst Ihr Training aus.</p>';
             }
         } else {
-            echo '<p class="error_ms text_center">Bitte setzten Sie zunächst Ihr aktives Training fest.
+            echo '<p class="text_center">Bitte setzten Sie zunächst Ihr aktives Training fest.
          Diese finden Sie unter Training => Alle <a class="col_blue" href="training_overview.php">Trainings</a>.</p>';
         }
         echo '</div> </div>';
