@@ -4,6 +4,7 @@
 <head>
     <title>Registrieren</title>
     <link rel="stylesheet" href="css/logregdivs.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'includes/navbar.php'; ?>
 </head>
 
