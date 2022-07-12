@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
     <link rel="stylesheet" href="css/train.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/train.js"></script>
     <?php include 'includes/navbar.php'; ?>
 </head>

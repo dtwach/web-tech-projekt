@@ -11,3 +11,13 @@ td:first-of-type {
 input {
   background-color: #80ba2417;
 }
+@media (max-width: 500px) {
+  .text_align {
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 10px;
+  }
+}
