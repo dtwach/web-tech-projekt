@@ -26,10 +26,14 @@ button {
   .element{
     width: 300px;
   }
-  .picture{
-    width: 200px !important;
-  }
   .logged_in{
     display: none;
+  }
+  .element>img {
+    width: 240px !important;
+    padding: 5px;
+  }
+  .last_item {
+    overflow-x: auto;
   }
 }
