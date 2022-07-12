@@ -17,7 +17,7 @@ input {
     margin: auto;
     text-align: center;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: hidden;
     border-radius: 10px;
   }
 }

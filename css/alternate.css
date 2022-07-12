@@ -34,6 +34,6 @@ button {
     padding: 5px;
   }
   .last_item {
-    overflow-x: auto;
+    overflow: hidden;
   }
 }
