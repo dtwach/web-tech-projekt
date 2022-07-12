@@ -24,6 +24,7 @@
             <input type="password" name="password" placeholder="Passwort" value=""> <br>
             <input type="password" name="password_again" placeholder="Passwort wdh." value=""> <br>
             <button type="submit" name="register_submit">Best&aumltigen</button> <br>
+            <a class="col_blue" href="login.php">Zurück</a>
         </form>
         <?php
         // Fehlermeldungen
