@@ -17,7 +17,7 @@
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="element">
-                <div class="searchable"><h3><a href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
+                <div class="searchable"><h3><a class="col_blue" href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
                 <p>' . $row['description'] . '</p> </div>
                 <img class="picture" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
                 <br>';
@@ -33,7 +33,7 @@
             }
         } else {
             echo '<p>Bitte legen Sie zunächst ein Training an.
-        Dies finden Sie unter Training => <a href="training_create.php">Training</a> erstellen.</p>';
+        Dies finden Sie unter Training => <a class="col_blue" href="training_create.php">Training</a> erstellen.</p>';
         }
         ?>
     </div>

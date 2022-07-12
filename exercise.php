@@ -33,13 +33,13 @@
                 if (isset($_GET['name'])) {
                     echo '<h3>' . $row['name'] . '</h3>';
                 } else {
-                    echo '<h3><a href="exercise.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>';
+                    echo '<h3><a class="col_blue" href="exercise.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>';
                 }
                 echo '
             <p>' . $row['description'] . '</p>';
                 if (isset($_GET['name']) and (($row['fk_user'] == $_SESSION['id']) or ($_SESSION['user'] == 'admin'))) {
                     echo '<div class="div_left2right">
-                    <a href="javascript:show_form_desc();">Beschreibung ändern</a>
+                    <a class="col_blue" href="javascript:show_form_desc();">Beschreibung ändern</a>
                     <form class="form_desc"enctype="multipart/form-data" action="includes/exercise.inc.php" method="post">
                     <input type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
                     <input type="hidden" name="name_ex" value="' . $row['name'] . '">
@@ -53,7 +53,7 @@
             <img style="width:400px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>';
                 if (isset($_GET['name']) and (($row['fk_user'] == $_SESSION['id']) or ($_SESSION['user'] == 'admin'))) {
                     echo '<div class="div_left2right">
-                <a href="javascript:show_form_img();">Bild ändern</a>
+                <a class="col_blue" href="javascript:show_form_img();">Bild ändern</a>
                 <form class="form_img"enctype="multipart/form-data" action="includes/exercise.inc.php" method="post">
                 <label for="file">Wählen Sie ein Bild aus:</label><br>
                 <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" /> <br>
@@ -110,7 +110,7 @@
             }
         } else {
             echo '<p>Bitte legen Sie zunächst eine Übung an.
-        Diese finden Sie unter Übungen => <a href="exercise_create.php">Übung</a> erstellen.</p>';
+        Diese finden Sie unter Übungen => <a class="col_blue" href="exercise_create.php">Übung</a> erstellen.</p>';
         }
         ?>
     </div>

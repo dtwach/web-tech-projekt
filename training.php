@@ -26,7 +26,7 @@
                 <p>' . $row['description'] . '</p> ';
             if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
                 echo '<div class="div_left2right">
-                    <a href="javascript:show_form_desc();">Beschreibung ändern</a>
+                    <a class="col_blue" href="javascript:show_form_desc();">Beschreibung ändern</a>
                     <form class="form_desc"enctype="multipart/form-data" action="includes/training.inc.php" method="post">
                     <input type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
                     <input type="hidden" name="name_tr" value="' . $row['name'] . '">
@@ -39,7 +39,7 @@
                 <img class="picture" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/>';
             if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
                 echo '<div class="div_left2right">
-                <a href="javascript:show_form_img();">Bild ändern</a>
+                <a class="col_blue" href="javascript:show_form_img();">Bild ändern</a>
                 <form class="form_img"enctype="multipart/form-data" action="includes/training.inc.php" method="post">
                 <label for="file">Wählen Sie ein Bild aus:</label><br>
                 <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" /> <br>
@@ -101,14 +101,20 @@
                         echo '<p class="pre_training"><strong>Alte Trainings:</strong></p>';
                     }
                     $max_sets = $ar[0];
+                    //Holt das Ausführungs-Datum und transformiert dieses in dd.mm.yyyy
+                    if(!is_null($ar[2])){
+                        $tmp_explode_1 = explode("_", $ar[2])[0];
+                        $tmp_explode_2 = explode("-", $tmp_explode_1);
+                        $set_time = $tmp_explode_2[2].'.'.$tmp_explode_2[1].'.'.$tmp_explode_2[0];
+                    }
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                     echo '<div class="table_container">
                     <table>          
                         <tr>';
                     if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
-                        echo '<th><a href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung</a></th>';
+                        echo '<th><a class="col_blue" href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung:</a> ' . $set_time . '</th>';
                     } else {
-                        echo '<th>Übung</a></th>';
+                        echo '<th>Übung: ' . $set_time . '</th>';
                     }
 
                     for ($i = 0; $i < $max_sets; $i++) {
@@ -154,7 +160,7 @@
             }
         } else {
             echo '<p class="error_ms text_center">Bitte setzten Sie zunächst Ihr aktives Training fest.
-         Diese finden Sie unter Training => Alle <a href="training_overview.php">Trainings</a>.</p>';
+         Diese finden Sie unter Training => Alle <a class="col_blue" href="training_overview.php">Trainings</a>.</p>';
         }
         echo '</div> </div>';
         ?>

@@ -15,7 +15,7 @@
             <input type="password" name="password" placeholder="Passwort"> <br>
             <button type="submit" name="login_submit">Best&aumltigen</button> <br>
         </form>
-        <a href="register.php">Registrieren</a>
+        <a class="col_blue" href="register.php">Registrieren</a>
         <?php
         // Fehlermeldungen
         isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';

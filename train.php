@@ -119,7 +119,7 @@
                     </from>';
             }
         } else {
-            echo '<p>Bitte fügen Sie dem Training zuerst <a href="exercise.php">Übungen</a> hinzu.</p>';
+            echo '<p>Bitte fügen Sie dem Training zuerst <a class="col_blue" href="exercise.php">Übungen</a> hinzu.</p>';
         }
         ?>
     </div>

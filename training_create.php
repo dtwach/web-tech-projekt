@@ -24,7 +24,7 @@
         if ($message !== '') {
             switch ($message) {
                 case 'success';
-                    echo '<p><a href="training.php?training=' . $_GET['train_id'] . '">Training</a> erfolgreich erstellt</p>';
+                    echo '<p><a class="col_blue" href="training.php?training=' . $_GET['train_id'] . '">Training</a> erfolgreich erstellt</p>';
                     break;
                 case 'empty':
                     echo '<p>Eingabefelder sind unvollständig</p>';
