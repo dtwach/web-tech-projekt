@@ -2,10 +2,10 @@
 <html lang="de">
 
 <head>
-    <?php include 'includes/navbar.php'; ?>
     <title>Alle Trainings</title>
     <link rel="stylesheet" href="css/alternate.css">
     <link rel="stylesheet" href="css/training_overview.css">
+    <?php include 'includes/navbar.php'; ?>
 </head>
 
 <body>

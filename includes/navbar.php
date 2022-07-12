@@ -2,12 +2,12 @@
 <html lang="de">
 
 <head>
-    <?php include 'login_session.php'; ?>
     <script src="js/search.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./css/logo.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
     <link rel="icon" href="./svg/dumbell.svg" />
+    <?php include 'login_session.php'; ?>
 </head>
 
 <body>

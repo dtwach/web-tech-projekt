@@ -2,9 +2,9 @@
 <html lang="de">
 
 <head>
-    <?php include 'includes/navbar.php'; ?>
     <title>Übung erstellen</title>
     <link rel="stylesheet" href="css/logregdivs.css">
+    <?php include 'includes/navbar.php'; ?>
 </head>
 
 <body>

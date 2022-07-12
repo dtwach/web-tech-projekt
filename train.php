@@ -2,12 +2,12 @@
 <html lang="de">
 
 <head>
-    <?php include 'includes/navbar.php'; ?>
     <title>Train</title>
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
     <link rel="stylesheet" href="css/train.css">
     <script src="js/train.js"></script>
+    <?php include 'includes/navbar.php'; ?>
 </head>
 
 <body>
