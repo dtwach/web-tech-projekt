@@ -21,3 +21,19 @@ button {
 .col_blue {
   color: 	#0645AD;
 }
+
+@media (max-width: 500px) {
+  .element{
+    width: 300px;
+  }
+  .logged_in{
+    display: none;
+  }
+  .element>img {
+    width: 240px !important;
+    padding: 5px;
+  }
+  .last_item {
+    overflow: hidden;
+  }
+}

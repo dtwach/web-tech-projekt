@@ -50,3 +50,11 @@ table {
   margin-right: auto;
 }
 
+@media (max-width: 500px) {
+  .heading_container{
+    width: 300px;
+  }
+  .picture{
+    width: 200px;
+  }
+}

@@ -4,6 +4,7 @@
 <head>
     <title>Registrieren</title>
     <link rel="stylesheet" href="css/logregdivs.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'includes/navbar.php'; ?>
 </head>
 
@@ -23,6 +24,7 @@
             <input type="password" name="password" placeholder="Passwort" value=""> <br>
             <input type="password" name="password_again" placeholder="Passwort wdh." value=""> <br>
             <button type="submit" name="register_submit">Best&aumltigen</button> <br>
+            <a class="col_blue" href="login.php">Zurück</a>
         </form>
         <?php
         // Fehlermeldungen

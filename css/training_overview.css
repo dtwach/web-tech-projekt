@@ -6,3 +6,9 @@
   width: 400px;
   height: 150px;
 }
+
+@media (max-width: 500px) {
+  .last_item {
+    overflow: hidden;
+  }
+}

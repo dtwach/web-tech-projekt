@@ -26,3 +26,9 @@ button {
 .col_blue{
   color:#0645AD;
 }
+
+@media (max-width: 500px) {
+  .borderpadding {
+    width: 85%;
+  }
+}
