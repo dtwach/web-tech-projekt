@@ -1,4 +1,4 @@
-# Fitness-Tracker von Kai Erik Jesse und Dennis Thomas Wach
+# Fitness-Tracker
 
 Für die Benutzung unter einer NICHT XAMPP Umgebung muss man includes/dbcon.inc.php mit passenden Daten füllen:
 
